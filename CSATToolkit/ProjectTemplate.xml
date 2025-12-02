@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Name="ProjectTempalte">
+	<KeyCheckPack Safe="1" Ctrl="1" Shift="1" Alt="1" Key="75" ComboClick="2"/>
+	<Elements>
+		<Element Name="Elem0"/>
+		<Element Name="Elem1"/>
+		<Element Name="Elem2"/>
+	</Elements>
+	<Solutions>
+		<Solution Name="solu0"/>
+		<Solution Name="solu1"/>
+		<Solution Name="solu2"/>
+	</Solutions>
+	<Config>
+		<AutoPlay>
+			<OnRoundStart>
+				<Solution Name="solu1"/>
+				<Solution Name="solu2"/>
+			</OnRoundStart>
+			<OnRoundEnd>
+				<Solution Name="solu0"/>
+			</OnRoundEnd>
+		</AutoPlay>
+	</Config>
+</Project> 

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{a3cac05d-54a9-41b6-ad84-3071b148bb6f}</ProjectGuid>
+    <RootNamespace>CSATToolkit</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\..\CSAT\DLLToCS</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\..\CSAT\DLLToCS</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="CSATiManager\AbstractLayer3D\AbstractLayer3D.hpp" />
+    <ClInclude Include="CSATiManager\AbstractLayer3D\IAbstractLayer3D.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\CameraDrawer\CameraDrawer.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\CameraSystem.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\DerivedElements\FirstPersonCameraPath\FirstPersonCameraPath.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\DerivedElements\LockedCameraPath\LockedCameraPath.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\ElementManager\ElementDebugger\ElementDebugger.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\Elements.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\ICameraSystem.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\DerivedElements\FreeCameraPath\FreeCameraPath.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\ElementBase\ElementBase.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\ElementManager\ElementConfig.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\ElementManager\ElementManager.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Projects\ProjectManager\ProjectConfig.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Projects\ProjectManager\ProjectManager.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Projects\Project\Project.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Solutions\SolutionManager\SolutionConfig.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Solutions\SolutionManager\SolutionManager.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Solutions\Solution\Solution.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Workspaces\WorkspaceManager\WorkspaceManager.hpp" />
+    <ClInclude Include="CSATiManager\CameraSystem\Workspaces\Workspace\Workspace.hpp" />
+    <ClInclude Include="CSATiManager\ConsoleManager\ConsoleManager.hpp" />
+    <ClInclude Include="CSATiManager\CSATiManager.hpp" />
+    <ClInclude Include="CSATiManager\CSController\Classes\Classes.hpp" />
+    <ClInclude Include="CSATiManager\CSController\CSController.hpp" />
+    <ClInclude Include="CSATiManager\Debugger\Debugger.hpp" />
+    <ClInclude Include="CSATiManager\Debugger\IDebugger.hpp" />
+    <ClInclude Include="CSATiManager\EffectorManager\EffectorManager.hpp" />
+    <ClInclude Include="CSATiManager\GameSettingsManager\GameSettingsManager.hpp" />
+    <ClInclude Include="CSATiManager\GlobalVars\GlobalVars.hpp" />
+    <ClInclude Include="CSATiManager\HomeManager\HomeManager.hpp" />
+    <ClInclude Include="CSATiManager\HookManager\HookManager.hpp" />
+    <ClInclude Include="CSATiManager\IPCer\IPCer.hpp" />
+    <ClInclude Include="CSATiManager\KeyTracker\KeyTracker.hpp" />
+    <ClInclude Include="CSATiManager\MessageManager\CSATMessage\CSATMessage.hpp" />
+    <ClInclude Include="CSATiManager\MessageManager\IMessageManager.hpp" />
+    <ClInclude Include="CSATiManager\MessageManager\MessageManager.hpp" />
+    <ClInclude Include="CSATiManager\MiniMap\MiniMap.hpp" />
+    <ClInclude Include="CSATiManager\ModuleBase\ModuleBase.hpp" />
+    <ClInclude Include="CSATiManager\VirtualUser\VirtualUser.hpp" />
+    <ClInclude Include="CSATMath\CSATMath.hpp" />
+    <ClInclude Include="ThirdParty\All_cs2_dumper.hpp" />
+    <ClInclude Include="ThirdParty\All_ImGui.hpp" />
+    <ClInclude Include="ThirdParty\All_MinHook.hpp" />
+    <ClInclude Include="ThirdParty\All_pugixml.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\animationsystem_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\buttons.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\client_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\engine2_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\host_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\interfaces.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\materialsystem2_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\networksystem_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\offsets.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\panorama_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\particles_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\pulse_system_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\rendersystemdx11_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\resourcesystem_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\scenesystem_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\schemasystem_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\server_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\soundsystem_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\steamaudio_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\vphysics2_dll.hpp" />
+    <ClInclude Include="ThirdParty\cs2_dumper\worldrenderer_dll.hpp" />
+    <ClInclude Include="ThirdParty\imgui_d11\imconfig.h" />
+    <ClInclude Include="ThirdParty\imgui_d11\imgui.h" />
+    <ClInclude Include="ThirdParty\imgui_d11\imgui_impl_dx11.h" />
+    <ClInclude Include="ThirdParty\imgui_d11\imgui_impl_win32.h" />
+    <ClInclude Include="ThirdParty\imgui_d11\imgui_internal.h" />
+    <ClInclude Include="ThirdParty\imgui_d11\imgui_stdlib.h" />
+    <ClInclude Include="ThirdParty\imgui_d11\imstb_rectpack.h" />
+    <ClInclude Include="ThirdParty\imgui_d11\imstb_textedit.h" />
+    <ClInclude Include="ThirdParty\imgui_d11\imstb_truetype.h" />
+    <ClInclude Include="ThirdParty\minhook_debug_x64\include\MinHook.h" />
+    <ClInclude Include="ThirdParty\pugixml\pugiconfig.hpp" />
+    <ClInclude Include="ThirdParty\pugixml\pugixml.hpp" />
+    <ClInclude Include="ThirdParty\Vector3\Vector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CSATiManager\AbstractLayer3D\AbstractLayer3D.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\CameraDrawer\CameraDrawer.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\CameraSystem.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\DerivedElements\FirstPersonCameraPath\FirstPersonCameraPath.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\DerivedElements\FreeCameraPath\FreeCameraPath.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\DerivedElements\LockedCameraPath\LockedCameraPath.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\ElementBase\ElementBase.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\ElementManager\ElementDebugger\ElementDebugger.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\ElementManager\ElementManager.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Projects\ProjectManager\ProjectManager.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Projects\Project\Project.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Solutions\SolutionManager\SolutionManager.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Solutions\Solution\Solution.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Workspaces\WorkspaceManager\WorkspaceManager.cpp" />
+    <ClCompile Include="CSATiManager\CameraSystem\Workspaces\Workspace\Workspace.cpp" />
+    <ClCompile Include="CSATiManager\ConsoleManager\ConsoleManager.cpp" />
+    <ClCompile Include="CSATiManager\CSATiManager.cpp" />
+    <ClCompile Include="CSATiManager\CSController\Classes\Classes.cpp" />
+    <ClCompile Include="CSATiManager\CSController\CSController.cpp" />
+    <ClCompile Include="CSATiManager\Debugger\Debugger.cpp" />
+    <ClCompile Include="CSATiManager\EffectorManager\EffectorManager.cpp" />
+    <ClCompile Include="CSATiManager\GameSettingsManager\GameSettingsManager.cpp" />
+    <ClCompile Include="CSATiManager\GlobalVars\GlobalVars.cpp" />
+    <ClCompile Include="CSATiManager\HomeManager\HomeManager.cpp" />
+    <ClCompile Include="CSATiManager\HookManager\HookManager.cpp" />
+    <ClCompile Include="CSATiManager\IPCer\IPCer.cpp" />
+    <ClCompile Include="CSATiManager\KeyTracker\KeyTracker.cpp" />
+    <ClCompile Include="CSATiManager\MessageManager\CSATMessage\CSATMessage.cpp" />
+    <ClCompile Include="CSATiManager\MessageManager\MessageManager.cpp" />
+    <ClCompile Include="CSATiManager\MiniMap\MiniMap.cpp" />
+    <ClCompile Include="CSATiManager\ModuleBase\ModuleBase.cpp" />
+    <ClCompile Include="CSATiManager\VirtualUser\VirtualUser.cpp" />
+    <ClCompile Include="CSATMath\CSATMath.cpp" />
+    <ClCompile Include="DllMain\DllMain.cpp" />
+    <ClCompile Include="ThirdParty\imgui_d11\imgui.cpp" />
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_draw.cpp" />
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_impl_dx11.cpp" />
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_impl_win32.cpp" />
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_stdlib.cpp" />
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_tables.cpp" />
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_widgets.cpp" />
+    <ClCompile Include="ThirdParty\pugixml\pugixml.cpp" />
+    <ClCompile Include="ThirdParty\Vector3\Vector.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="ThirdParty\minhook_debug_x64\lib\minhook.x64d.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="ProjectTemplate.xml" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

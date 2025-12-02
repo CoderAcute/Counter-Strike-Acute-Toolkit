@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Main">
+      <UniqueIdentifier>{8b11145a-97c4-4ec3-9b53-a13b0c49fbbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{4edb6597-a462-4f6c-8665-a2d785943e03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\pugixml">
+      <UniqueIdentifier>{8604a664-6f7a-4b82-87a3-b9c356c94999}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{4f354b23-0876-4fcb-b11e-644edebf71c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Charsets">
+      <UniqueIdentifier>{2e0e8723-ebd4-46ac-8bc4-e00a6e90c9cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATeCore">
+      <UniqueIdentifier>{1260a1a6-e159-4869-a128-97b042cc8787}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATeCore\CSATeMainWindowManager">
+      <UniqueIdentifier>{a26348f4-0fe3-4912-af79-55b3a1c9e148}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATeCore\CSATeMainWindowManager\MenuManager">
+      <UniqueIdentifier>{d0b5fcb6-6814-4695-a02a-a71e2d051bbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATeCore\CSATeMainWindowManager\ConsoleManager">
+      <UniqueIdentifier>{7b452463-f383-4234-a53e-36f27068f1ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATeCore\IPCer">
+      <UniqueIdentifier>{778e9e90-7d67-481b-a3fc-2ec2520592bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATeCore\ConfigManager">
+      <UniqueIdentifier>{adcfb44e-12e3-4f65-b93a-52be1b9dd286}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main\Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\pugixml\pugixml.cpp">
+      <Filter>ThirdParty\pugixml</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\Charsets\Charsets.cpp">
+      <Filter>Include\Charsets</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATeCore\CSATeCore.cpp">
+      <Filter>CSATeCore</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATeCore\CSATeMainWindowManager\CSATeMainWindowManager.cpp">
+      <Filter>CSATeCore\CSATeMainWindowManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATeCore\CSATeMainWindowManager\ConsoleManager\ConsoleManager.cpp">
+      <Filter>CSATeCore\CSATeMainWindowManager\ConsoleManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATeCore\CSATeMainWindowManager\MenuManager\MenuManager.cpp">
+      <Filter>CSATeCore\CSATeMainWindowManager\MenuManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATeCore\IPCer\IPCer.cpp">
+      <Filter>CSATeCore\IPCer</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATeCore\ConfigManager\ConfigManager.cpp">
+      <Filter>CSATeCore\ConfigManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Main\Main.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\pugixml\pugiconfig.hpp">
+      <Filter>ThirdParty\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\pugixml\pugixml.hpp">
+      <Filter>ThirdParty\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\All_pugixml.hpp">
+      <Filter>ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Charsets\Charsets.hpp">
+      <Filter>Include\Charsets</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATeCore\CSATeCore.hpp">
+      <Filter>CSATeCore</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATeCore\CSATeMainWindowManager\CSATeMainWindowManager.hpp">
+      <Filter>CSATeCore\CSATeMainWindowManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATeCore\CSATeMainWindowManager\WindowCommandIDs.hpp">
+      <Filter>CSATeCore\CSATeMainWindowManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATeCore\CSATeMainWindowManager\ConsoleManager\ConsoleManager.hpp">
+      <Filter>CSATeCore\CSATeMainWindowManager\ConsoleManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATeCore\CSATeMainWindowManager\ConsoleManager\ConsoleStrings.hpp">
+      <Filter>CSATeCore\CSATeMainWindowManager\ConsoleManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATeCore\CSATeMainWindowManager\MenuManager\MenuManager.hpp">
+      <Filter>CSATeCore\CSATeMainWindowManager\MenuManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATeCore\CSATeMainWindowManager\MenuManager\MenuStrings.hpp">
+      <Filter>CSATeCore\CSATeMainWindowManager\MenuManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATeCore\IPCer\IPCer.hpp">
+      <Filter>CSATeCore\IPCer</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATeCore\ConfigManager\ConfigManager.hpp">
+      <Filter>CSATeCore\ConfigManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

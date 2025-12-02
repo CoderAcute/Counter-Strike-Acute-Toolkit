@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="CSATiManager">
+      <UniqueIdentifier>{4ed67fb1-70c4-4acb-bf8d-f980abb46b45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATMath">
+      <UniqueIdentifier>{3aceb5d5-b3aa-4d98-86e0-a0e594c1199c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DllMain">
+      <UniqueIdentifier>{3900ffb0-aad7-4069-aa23-2818525e35c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem">
+      <UniqueIdentifier>{cfbe8ac3-565f-4a45-b2c1-e98e7059a50b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\ConsoleManager">
+      <UniqueIdentifier>{d1ef420e-62c3-41ef-ba1b-1866b4785734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\EffectorManager">
+      <UniqueIdentifier>{6a9c1f11-9379-42c4-bdd0-898acdcf1e20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\GameSettingsManager">
+      <UniqueIdentifier>{126d3674-ef83-4516-858a-434301f2508b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\HomeManager">
+      <UniqueIdentifier>{5e5ec89e-0bce-4453-b0fd-00698f385606}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\CameraDrawer">
+      <UniqueIdentifier>{1481806f-8093-4da7-8bbf-3a36d4eb8210}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Elements">
+      <UniqueIdentifier>{cab6f0e0-cbcb-45f9-855e-16f2ca923d58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Solutions">
+      <UniqueIdentifier>{23c52e25-27da-4280-8006-fae39b26a567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Elements\ElementBase">
+      <UniqueIdentifier>{1ed65770-5e72-488a-8e56-576ec550042b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Solutions\Solution">
+      <UniqueIdentifier>{c965436a-e293-41c1-aaaa-85aa56c82e83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{05774525-b342-4d8d-a8a6-2aa95046cb6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\cs2_dumper">
+      <UniqueIdentifier>{13f7dc69-f0ba-4900-98d3-4978e006e6df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\imgui_d11">
+      <UniqueIdentifier>{23a5d36a-a651-4faa-b9dd-f68270c225f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\minhook_debug_x64">
+      <UniqueIdentifier>{773a05e6-8521-4730-8f7c-3268407074b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\pugixml">
+      <UniqueIdentifier>{2a820d80-c3b5-465e-b2e2-ed85093c0bf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\Vector3">
+      <UniqueIdentifier>{2bfd1d18-e211-4f34-987f-2f53195a34b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Elements\ElementManager">
+      <UniqueIdentifier>{cba379d4-58b1-4f3d-b8e0-5f555a8e8d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Solutions\SolutionManager">
+      <UniqueIdentifier>{fc584b1d-d842-4a31-bcba-49deeef55ef0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Elements\DerivedElements">
+      <UniqueIdentifier>{ff4cd5b6-6cdd-4743-9318-2dc7066b7e1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Elements\DerivedElements\FreeCameraPath">
+      <UniqueIdentifier>{cb585c99-921c-4238-b6ba-98ec42b4f26f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Projects">
+      <UniqueIdentifier>{d66bd801-2265-447d-a8a7-09018e8b9614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Workspaces">
+      <UniqueIdentifier>{c715a5b1-bc0e-450c-ba37-b92936e76d72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Workspaces\Workspace">
+      <UniqueIdentifier>{7d430ece-34b5-4e5f-abc8-b13f9ed1a6d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Workspaces\WorkspaceManager">
+      <UniqueIdentifier>{5163ea67-81ac-4404-960e-a0fb632199d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Projects\Project">
+      <UniqueIdentifier>{f8a385c4-d1f2-489a-a417-68f691ebe095}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Projects\ProjectManager">
+      <UniqueIdentifier>{a19a55df-6ab8-44e9-b421-8d8bed6d9b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\IPCer">
+      <UniqueIdentifier>{59f47b58-4423-4a80-b2dc-70c58c51c89d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\KeyTracker">
+      <UniqueIdentifier>{dd72e631-67a1-4ea7-a1cf-3d3b47dec2fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\VirtualUser">
+      <UniqueIdentifier>{ea1bfee1-b10a-4f81-a45f-d6820ecb64c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\MessageManager">
+      <UniqueIdentifier>{4d085d32-5099-48e8-bf5a-3716742bfae3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CSController">
+      <UniqueIdentifier>{bf82712b-7873-42c0-93e8-b056a03c8cfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CSController\Classes">
+      <UniqueIdentifier>{0af1e19f-e0ff-40b9-8725-289c055157cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\MessageManager\CSATMessage">
+      <UniqueIdentifier>{9a2f7007-583c-4a44-b125-d72a0d0da2b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\HookManager">
+      <UniqueIdentifier>{500a2c53-8852-4176-851b-a0020fb00c65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Elements\DerivedElements\FirstPersonCameraPath">
+      <UniqueIdentifier>{76e2ae10-176c-4537-bbec-2c059515f584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Elements\DerivedElements\LockedCameraPath">
+      <UniqueIdentifier>{2cd57ef5-ab74-41b2-a66a-a032d7a12d8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\CameraSystem\Elements\ElementManager\ElementDebugger">
+      <UniqueIdentifier>{47351ba3-b067-4330-ae7d-ab0c3a5c4561}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\GlobalVars">
+      <UniqueIdentifier>{876f6a50-5989-4d53-ac5d-f8c7f9d853c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\AbstractLayer3D">
+      <UniqueIdentifier>{e13a4068-4722-4bf0-8d1d-d0b4e739b143}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\MiniMap">
+      <UniqueIdentifier>{c8da0ac4-ff9f-4b72-8689-c7c69beb9fe5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\ModuleBase">
+      <UniqueIdentifier>{db94fb74-e40e-4423-8ded-00b8a7fda7b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSATiManager\Debugger">
+      <UniqueIdentifier>{ed2f49c0-0269-4aaa-bea1-6b3871d46927}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ThirdParty\All_cs2_dumper.hpp">
+      <Filter>ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\All_ImGui.hpp">
+      <Filter>ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\All_MinHook.hpp">
+      <Filter>ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\All_pugixml.hpp">
+      <Filter>ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\animationsystem_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\buttons.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\client_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\engine2_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\host_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\interfaces.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\materialsystem2_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\networksystem_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\offsets.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\panorama_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\particles_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\pulse_system_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\rendersystemdx11_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\resourcesystem_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\scenesystem_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\schemasystem_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\server_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\soundsystem_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\steamaudio_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\vphysics2_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\cs2_dumper\worldrenderer_dll.hpp">
+      <Filter>ThirdParty\cs2_dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui_d11\imconfig.h">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui_d11\imgui.h">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui_d11\imgui_impl_dx11.h">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui_d11\imgui_impl_win32.h">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui_d11\imgui_internal.h">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui_d11\imgui_stdlib.h">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui_d11\imstb_rectpack.h">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui_d11\imstb_textedit.h">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui_d11\imstb_truetype.h">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\minhook_debug_x64\include\MinHook.h">
+      <Filter>ThirdParty\minhook_debug_x64</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\pugixml\pugiconfig.hpp">
+      <Filter>ThirdParty\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\pugixml\pugixml.hpp">
+      <Filter>ThirdParty\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\Vector3\Vector.h">
+      <Filter>ThirdParty\Vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\DerivedElements\FreeCameraPath\FreeCameraPath.hpp">
+      <Filter>CSATiManager\CameraSystem\Elements\DerivedElements\FreeCameraPath</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\ElementBase\ElementBase.hpp">
+      <Filter>CSATiManager\CameraSystem\Elements\ElementBase</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Solutions\Solution\Solution.hpp">
+      <Filter>CSATiManager\CameraSystem\Solutions\Solution</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Solutions\SolutionManager\SolutionManager.hpp">
+      <Filter>CSATiManager\CameraSystem\Solutions\SolutionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\CameraDrawer\CameraDrawer.hpp">
+      <Filter>CSATiManager\CameraSystem\CameraDrawer</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\ElementManager\ElementManager.hpp">
+      <Filter>CSATiManager\CameraSystem\Elements\ElementManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\CameraSystem.hpp">
+      <Filter>CSATiManager\CameraSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Workspaces\Workspace\Workspace.hpp">
+      <Filter>CSATiManager\CameraSystem\Workspaces\Workspace</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Workspaces\WorkspaceManager\WorkspaceManager.hpp">
+      <Filter>CSATiManager\CameraSystem\Workspaces\WorkspaceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Projects\Project\Project.hpp">
+      <Filter>CSATiManager\CameraSystem\Projects\Project</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Projects\ProjectManager\ProjectManager.hpp">
+      <Filter>CSATiManager\CameraSystem\Projects\ProjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Solutions\SolutionManager\SolutionConfig.hpp">
+      <Filter>CSATiManager\CameraSystem\Solutions\SolutionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Projects\ProjectManager\ProjectConfig.hpp">
+      <Filter>CSATiManager\CameraSystem\Projects\ProjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\ElementManager\ElementConfig.hpp">
+      <Filter>CSATiManager\CameraSystem\Elements\ElementManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\IPCer\IPCer.hpp">
+      <Filter>CSATiManager\IPCer</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATMath\CSATMath.hpp">
+      <Filter>CSATMath</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CSATiManager.hpp">
+      <Filter>CSATiManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\HomeManager\HomeManager.hpp">
+      <Filter>CSATiManager\HomeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\GameSettingsManager\GameSettingsManager.hpp">
+      <Filter>CSATiManager\GameSettingsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\EffectorManager\EffectorManager.hpp">
+      <Filter>CSATiManager\EffectorManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\ConsoleManager\ConsoleManager.hpp">
+      <Filter>CSATiManager\ConsoleManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\KeyTracker\KeyTracker.hpp">
+      <Filter>CSATiManager\KeyTracker</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\VirtualUser\VirtualUser.hpp">
+      <Filter>CSATiManager\VirtualUser</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\ICameraSystem.hpp">
+      <Filter>CSATiManager\CameraSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\MessageManager\IMessageManager.hpp">
+      <Filter>CSATiManager\MessageManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\MessageManager\MessageManager.hpp">
+      <Filter>CSATiManager\MessageManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CSController\CSController.hpp">
+      <Filter>CSATiManager\CSController</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CSController\Classes\Classes.hpp">
+      <Filter>CSATiManager\CSController\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\MessageManager\CSATMessage\CSATMessage.hpp">
+      <Filter>CSATiManager\MessageManager\CSATMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\HookManager\HookManager.hpp">
+      <Filter>CSATiManager\HookManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\DerivedElements\FirstPersonCameraPath\FirstPersonCameraPath.hpp">
+      <Filter>CSATiManager\CameraSystem\Elements\DerivedElements\FirstPersonCameraPath</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\DerivedElements\LockedCameraPath\LockedCameraPath.hpp">
+      <Filter>CSATiManager\CameraSystem\Elements\DerivedElements\LockedCameraPath</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\Elements.hpp">
+      <Filter>CSATiManager\CameraSystem\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\CameraSystem\Elements\ElementManager\ElementDebugger\ElementDebugger.hpp">
+      <Filter>CSATiManager\CameraSystem\Elements\ElementManager\ElementDebugger</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\GlobalVars\GlobalVars.hpp">
+      <Filter>CSATiManager\GlobalVars</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\AbstractLayer3D\AbstractLayer3D.hpp">
+      <Filter>CSATiManager\AbstractLayer3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\AbstractLayer3D\IAbstractLayer3D.hpp">
+      <Filter>CSATiManager\AbstractLayer3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\MiniMap\MiniMap.hpp">
+      <Filter>CSATiManager\MiniMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\ModuleBase\ModuleBase.hpp">
+      <Filter>CSATiManager\ModuleBase</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\Debugger\Debugger.hpp">
+      <Filter>CSATiManager\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="CSATiManager\Debugger\IDebugger.hpp">
+      <Filter>CSATiManager\Debugger</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CSATiManager\CameraSystem\CameraDrawer\CameraDrawer.cpp">
+      <Filter>CSATiManager\CameraSystem\CameraDrawer</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\ElementBase\ElementBase.cpp">
+      <Filter>CSATiManager\CameraSystem\Elements\ElementBase</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Solutions\Solution\Solution.cpp">
+      <Filter>CSATiManager\CameraSystem\Solutions\Solution</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\ConsoleManager\ConsoleManager.cpp">
+      <Filter>CSATiManager\ConsoleManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\EffectorManager\EffectorManager.cpp">
+      <Filter>CSATiManager\EffectorManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\GameSettingsManager\GameSettingsManager.cpp">
+      <Filter>CSATiManager\GameSettingsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\HomeManager\HomeManager.cpp">
+      <Filter>CSATiManager\HomeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATMath\CSATMath.cpp">
+      <Filter>CSATMath</Filter>
+    </ClCompile>
+    <ClCompile Include="DllMain\DllMain.cpp">
+      <Filter>DllMain</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui_d11\imgui.cpp">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_draw.cpp">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_impl_dx11.cpp">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_impl_win32.cpp">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_stdlib.cpp">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_tables.cpp">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui_d11\imgui_widgets.cpp">
+      <Filter>ThirdParty\imgui_d11</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\pugixml\pugixml.cpp">
+      <Filter>ThirdParty\pugixml</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\Vector3\Vector.cpp">
+      <Filter>ThirdParty\Vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CSATiManager.cpp">
+      <Filter>CSATiManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\DerivedElements\FreeCameraPath\FreeCameraPath.cpp">
+      <Filter>CSATiManager\CameraSystem\Elements\DerivedElements\FreeCameraPath</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Solutions\SolutionManager\SolutionManager.cpp">
+      <Filter>CSATiManager\CameraSystem\Solutions\SolutionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\ElementManager\ElementManager.cpp">
+      <Filter>CSATiManager\CameraSystem\Elements\ElementManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\CameraSystem.cpp">
+      <Filter>CSATiManager\CameraSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Workspaces\Workspace\Workspace.cpp">
+      <Filter>CSATiManager\CameraSystem\Workspaces\Workspace</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Workspaces\WorkspaceManager\WorkspaceManager.cpp">
+      <Filter>CSATiManager\CameraSystem\Workspaces\WorkspaceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Projects\Project\Project.cpp">
+      <Filter>CSATiManager\CameraSystem\Projects\Project</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Projects\ProjectManager\ProjectManager.cpp">
+      <Filter>CSATiManager\CameraSystem\Projects\ProjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\IPCer\IPCer.cpp">
+      <Filter>CSATiManager\IPCer</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\KeyTracker\KeyTracker.cpp">
+      <Filter>CSATiManager\KeyTracker</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\VirtualUser\VirtualUser.cpp">
+      <Filter>CSATiManager\VirtualUser</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\MessageManager\MessageManager.cpp">
+      <Filter>CSATiManager\MessageManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CSController\CSController.cpp">
+      <Filter>CSATiManager\CSController</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CSController\Classes\Classes.cpp">
+      <Filter>CSATiManager\CSController\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\MessageManager\CSATMessage\CSATMessage.cpp">
+      <Filter>CSATiManager\MessageManager\CSATMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\HookManager\HookManager.cpp">
+      <Filter>CSATiManager\HookManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\DerivedElements\FirstPersonCameraPath\FirstPersonCameraPath.cpp">
+      <Filter>CSATiManager\CameraSystem\Elements\DerivedElements\FirstPersonCameraPath</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\DerivedElements\LockedCameraPath\LockedCameraPath.cpp">
+      <Filter>CSATiManager\CameraSystem\Elements\DerivedElements\LockedCameraPath</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\CameraSystem\Elements\ElementManager\ElementDebugger\ElementDebugger.cpp">
+      <Filter>CSATiManager\CameraSystem\Elements\ElementManager\ElementDebugger</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\GlobalVars\GlobalVars.cpp">
+      <Filter>CSATiManager\GlobalVars</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\AbstractLayer3D\AbstractLayer3D.cpp">
+      <Filter>CSATiManager\AbstractLayer3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\MiniMap\MiniMap.cpp">
+      <Filter>CSATiManager\MiniMap</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\ModuleBase\ModuleBase.cpp">
+      <Filter>CSATiManager\ModuleBase</Filter>
+    </ClCompile>
+    <ClCompile Include="CSATiManager\Debugger\Debugger.cpp">
+      <Filter>CSATiManager\Debugger</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="ThirdParty\minhook_debug_x64\lib\minhook.x64d.lib">
+      <Filter>ThirdParty\minhook_debug_x64</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="ProjectTemplate.xml">
+      <Filter>CSATiManager\CameraSystem\Projects\Project</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>
