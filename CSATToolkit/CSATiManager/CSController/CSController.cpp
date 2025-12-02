@@ -285,8 +285,6 @@ int CSController::BasicUpdate() {
 
 	this->ScreenWide = 1920.0f;
 
-
-
 	this->ScreenHigh = 1080.0f;
 
 	this->Local.Player.Pawn.m_pObserverServices.Address = *reinterpret_cast<uintptr_t*>(this->Local.Player.Pawn.Address + cs2_dumper::schemas::client_dll::C_BasePlayerPawn::m_pObserverServices);
