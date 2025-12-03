@@ -68,14 +68,14 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
+    <None Include="CSAT\CSAT\Saves\Internal\Core\CSATUIConfig.ini">
+      <Filter>CSAT\CSAT\Saves\Internal\Core</Filter>
+    </None>
     <None Include="CSAT\CSAT\CSAT.exe">
       <Filter>CSAT\CSAT</Filter>
     </None>
-    <None Include="CSAT\CSAT\DLLToCS\CSATToolkit.dll">
+    <None Include="CSAT\CSAT\DLLToCS\CSATDLL.dll">
       <Filter>CSAT\CSAT\DLLToCS</Filter>
-    </None>
-    <None Include="CSAT\CSAT\Saves\Internal\Core\CSATUIConfig.ini">
-      <Filter>CSAT\CSAT\Saves\Internal\Core</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

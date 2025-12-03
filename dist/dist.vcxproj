@@ -132,7 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="CSAT\CSAT\CSAT.exe" />
-    <None Include="CSAT\CSAT\DLLToCS\CSATToolkit.dll" />
+    <None Include="CSAT\CSAT\DLLToCS\CSATDLL.dll" />
     <None Include="CSAT\CSAT\Saves\Internal\Core\CSATUIConfig.ini" />
   </ItemGroup>
   <ItemGroup>

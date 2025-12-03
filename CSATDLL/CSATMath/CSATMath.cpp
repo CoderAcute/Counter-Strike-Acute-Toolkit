@@ -228,9 +228,8 @@ DirectX::XMFLOAT3 CSATMath::RotatePoint(
 	// === 第3步：初始化旋转四元数 ===
 	DirectX::XMVECTOR rotationQuaternion = DirectX::XMQuaternionIdentity();
 
-	// === 第4步：按照合理顺序应用旋转 ===
-	// 注意：即使使用了非标准轴，旋转顺序仍然很重要
-	// 我们假设应用顺序：先Roll → 再Pitch → 最后Yaw
+	// === 第4步：按顺序应用旋转 ===
+	// 应用顺序：先Roll → 再Pitch → 最后Yaw
 
 	// 4.1 应用绕X轴旋转（Roll - 滚转）
 	if (rollDegrees != 0.0f)

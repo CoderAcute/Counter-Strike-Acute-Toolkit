@@ -39,7 +39,7 @@ namespace DirectX {
         return XMFLOAT3(a.x - b.x, a.y - b.y, a.z - b.z);
     }
 
-    inline XMFLOAT3 operator*(const XMFLOAT3& v, float scalar) {
+    inline XMFLOAT3 operator*(const XMFLOAT3& v, const float scalar) {
         return XMFLOAT3(v.x * scalar, v.y * scalar, v.z * scalar);
     }
 
@@ -49,7 +49,7 @@ namespace DirectX {
     inline XMFLOAT3 operator*(XMFLOAT3& a, const XMFLOAT3& b) {
         return XMFLOAT3(a.x * b.x, a.y * b.y, a.z * b.z);
     }
-    inline XMFLOAT3 operator/(const XMFLOAT3& v, float scalar) {
+    inline XMFLOAT3 operator/(const XMFLOAT3& v, const float scalar) {
         return XMFLOAT3(v.x / scalar, v.y / scalar, v.z / scalar);
     }
     inline XMFLOAT3& operator+=(XMFLOAT3& a, const XMFLOAT3& b) {
@@ -70,7 +70,7 @@ namespace DirectX {
         v.z *= b.z;
         return v;
     }
-    inline XMFLOAT3& operator*=(XMFLOAT3& v, float scalar) {
+    inline XMFLOAT3& operator*=(XMFLOAT3& v, const float scalar) {
         v.x *= scalar;
         v.y *= scalar;
         v.z *= scalar;
@@ -82,7 +82,7 @@ namespace DirectX {
         v.z /= b.z;
         return v;
     }
-    inline XMFLOAT3& operator/=(XMFLOAT3& v, float scalar) {
+    inline XMFLOAT3& operator/=(XMFLOAT3& v, const float scalar) {
         v.x /= scalar;
         v.y /= scalar;
         v.z /= scalar;
