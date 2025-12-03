@@ -24,6 +24,7 @@
     <ProjectGuid>{a3cac05d-54a9-41b6-ad84-3071b148bb6f}</ProjectGuid>
     <RootNamespace>CSATToolkit</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>CSATDLL</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

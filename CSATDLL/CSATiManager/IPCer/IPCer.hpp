@@ -19,9 +19,9 @@ public:
 
         struct S_DLLToCS {
             std::filesystem::path Path;       // DLLToCS工具目录
-            struct S_CSATToolKit_dll {
+            struct S_CSATDLL_dll {
                 std::filesystem::path Path;
-            }CSATToolKit_dll;
+            }CSATDLL_dll;
         }DLLToCS;
 
         struct S_Saves {
@@ -81,7 +81,7 @@ public:
     std::filesystem::path PathGet_CSAT();
     std::filesystem::path PathGet_CSATConfig();
     std::filesystem::path PathGet_DLLToCS();
-    std::filesystem::path PathGet_CSATToolKit_dll();
+    std::filesystem::path PathGet_CSATDLL_dll();
     std::filesystem::path PathGet_Saves();
     std::filesystem::path PathGet_Internal();
     std::filesystem::path PathGet_Core();

@@ -44,7 +44,7 @@ bool CSATeCore::Init(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	//IPCer初始化
 	this->IPCer().Init(this);
 	this->Console().PrintInfor("CSAT.exe路径:  " + this->IPCer().PathGet_CSAT_exe().string() + "\n");
-	this->Console().PrintInfor("CSATToolkit.dll路径:  " + this->IPCer().PathGet_CSATToolKit_dll().string() + "\n");
+	this->Console().PrintInfor("CSATDLL.dll路径:  " + this->IPCer().PathGet_CSATDLL_dll().string() + "\n");
 	this->Console().PrintInfor("Configs文件夹路径：" + this->IPCer().PathGet_Configs().string() + "\n");
 
 	//ConfigManager初始化
