@@ -206,7 +206,7 @@ bool SolutionManager::Solution_LoadFromXML(const std::filesystem::path& FullPath
         //获取元素名称
         std::string NewElementName = node_Element.attribute("Name").as_string();
         //得到元素指针
-        std::shared_ptr<ElementBase> element = this->EManager->Element_Get<ElementBase>(NewElementName);//字符串资源已经加载，可以move
+        std::shared_ptr<ElementBase> element = this->EManager->Element_Get<ElementBase>(NewElementName);
         //检验是否找到元素
         if (!element) {//未找到元素
             //输出错误信息

@@ -57,6 +57,17 @@ void VirtualUser::VirtualMain() {
 	if (this->CSATi->KT().CheckWithPack(KeyCheckPack{ true,false,false,true,'P',1 })) {
 		this->CameraSystem->ShutDown();
 	}
+	if (this->CSATi->KT().CheckWithPack(KeyCheckPack{ true,false,false,true,'T',1 })) {
+		bool AutoRunning = this->Running.load();
+		if (AutoRunning) {
+			this->Running.store(false);
+			this->CSATi->IDebugger().AddWarning("自动化功能已关闭");
+		}
+		else {
+			this->Running.store(true);
+			this->CSATi->IDebugger().AddWarning("自动化功能已开启");
+		}
+	}
 	return;
 }
 

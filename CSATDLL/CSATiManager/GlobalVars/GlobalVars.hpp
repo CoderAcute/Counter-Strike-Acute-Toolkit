@@ -9,7 +9,7 @@
 //不允许写操作
 class GlobalVarsOnlyRead {
 public:
-	static constexpr const char CSATiVersion[] = "V1.0.3";
+	static constexpr const char CSATiVersion[] = "V1.0.5";
 	static constexpr const char TimeStamp[] = "Built: " __DATE__ " " __TIME__;
 	static constexpr const char FullName[] = "Counter-Strike: Acute Toolkit";
 	static constexpr const char DeveloperName[] = "Acute";
