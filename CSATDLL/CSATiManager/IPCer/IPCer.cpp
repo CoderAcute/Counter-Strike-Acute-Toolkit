@@ -41,7 +41,7 @@ bool IPCer::Init() {
     this->Paths.CSAT.Path = this->PathGet_CSAT_exe().parent_path();
     this->Paths.CSAT.CSATConfig.Path = this->PathGet_CSAT() / "CSATConfig";
     this->Paths.CSAT.DLLToCS.Path = this->PathGet_CSAT() / "DLLToCS";
-    this->Paths.CSAT.DLLToCS.CSATToolKit_dll.Path = this->PathGet_DLLToCS() / "CSATTooKit.dll";
+    this->Paths.CSAT.DLLToCS.CSATDLL_dll.Path = this->PathGet_DLLToCS() / "CSATDLL.dll";
     this->Paths.CSAT.Saves.Path = this->PathGet_CSAT() / "Saves";
     this->Paths.CSAT.Saves.Internal.Path = this->PathGet_Saves() / "Internal";
     this->Paths.CSAT.Saves.Internal.Core.Path = this->PathGet_Internal() / "Core";
@@ -179,8 +179,8 @@ std::filesystem::path IPCer::PathGet_CSATConfig() {
 std::filesystem::path IPCer::PathGet_DLLToCS() {
     return this->Paths.CSAT.DLLToCS.Path;
 }
-std::filesystem::path IPCer::PathGet_CSATToolKit_dll() {
-    return this->Paths.CSAT.DLLToCS.CSATToolKit_dll.Path;
+std::filesystem::path IPCer::PathGet_CSATDLL_dll() {
+    return this->Paths.CSAT.DLLToCS.CSATDLL_dll.Path;
 }
 std::filesystem::path IPCer::PathGet_Saves() {
     return this->Paths.CSAT.Saves.Path;
@@ -206,7 +206,7 @@ std::string IPCer::GetAllPathMsg() {
     oss << "CSAT文件夹路径：" << this->PathGet_CSAT()
         << "\n  CSATConfig文件夹路径：" << this->PathGet_CSATConfig()
         << "\n  DLLToCS文件夹路径：" << this->PathGet_DLLToCS()
-        << "\n      CSATToolKit.dll路径：" << this->PathGet_CSATToolKit_dll()
+        << "\n      CSATDLL.dll路径：" << this->PathGet_CSATDLL_dll()
         << "\n  Saves文件夹路径：" << this->PathGet_Saves()
         << "\n      Internal文件夹路径为：" << this->PathGet_Internal()
         << "\n          Core文件夹路径为：" << this->PathGet_Core()

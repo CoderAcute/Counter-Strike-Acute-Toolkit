@@ -46,7 +46,7 @@ bool IPCer::Init(CSATeCore* Core) {
     this->Paths.CSAT.Path = this->PathGet_CSAT_exe().parent_path();
     this->Paths.CSAT.CSATConfig.Path = this->PathGet_CSAT() / "CSATConfig";
     this->Paths.CSAT.DLLToCS.Path = this->PathGet_CSAT() / "DLLToCS";
-    this->Paths.CSAT.DLLToCS.CSATToolKit_dll.Path = this->PathGet_DLLToCS() / "CSATToolkit.dll";
+    this->Paths.CSAT.DLLToCS.CSATDLL_dll.Path = this->PathGet_DLLToCS() / "CSATDLL.dll";
     this->Paths.CSAT.Saves.Path = this->PathGet_CSAT() / "Saves";
     this->Paths.CSAT.Saves.External.Path = this->PathGet_Saves() / "External";
     this->Paths.CSAT.Saves.External.Core.Path = this->PathGet_External() / "Core";
@@ -71,8 +71,8 @@ std::filesystem::path IPCer::PathGet_CSATConfig() {
 std::filesystem::path IPCer::PathGet_DLLToCS() {
     return this->Paths.CSAT.DLLToCS.Path;
 }
-std::filesystem::path IPCer::PathGet_CSATToolKit_dll() {
-    return this->Paths.CSAT.DLLToCS.CSATToolKit_dll.Path;
+std::filesystem::path IPCer::PathGet_CSATDLL_dll() {
+    return this->Paths.CSAT.DLLToCS.CSATDLL_dll.Path;
 }
 std::filesystem::path IPCer::PathGet_Saves() {
     return this->Paths.CSAT.Saves.Path;
@@ -191,7 +191,7 @@ bool IPCer::OpenCS2() {
     }
     this->Core->ConfigManager().Config_SetCS2Path(this->PathGet_cs2_exe());
     this->Core->ConfigManager().Config_Save(this->PathGet_Configs());
-    // 构建参数（不包含可执行文件路径）
+    //构建参数
     std::wstring parameters = L"-insecure -worldwide -window -w 1920 -h 1080 -novid";
 
     HINSTANCE result = ShellExecuteW(
@@ -233,12 +233,12 @@ bool IPCer::TryCatchCS2() {
 }
 
 bool IPCer::Inject() {
-    if (this->Paths.CSAT.DLLToCS.CSATToolKit_dll.Path.empty()) {
-        this->Core->Console().PrintInfor("CSATToolKit.dll路径未设置！\n");
+    if (this->Paths.CSAT.DLLToCS.CSATDLL_dll.Path.empty()) {
+        this->Core->Console().PrintInfor("CSATDLL.dll路径未设置！\n");
         return false;
     }
-    if (!std::filesystem::exists(this->Paths.CSAT.DLLToCS.CSATToolKit_dll.Path)) {
-        this->Core->Console().PrintInfor("CSATToolKit.dll文件不存在！\n");
+    if (!std::filesystem::exists(this->Paths.CSAT.DLLToCS.CSATDLL_dll.Path)) {
+        this->Core->Console().PrintInfor("CSATDLL.dll文件不存在！\n");
         return false;
     }
     if (!this->CS2hProcess || this->CS2hProcess == INVALID_HANDLE_VALUE) {
@@ -248,11 +248,11 @@ bool IPCer::Inject() {
 
     bool InjectResult;
 
-    // 1. 在目标进程分配内存
+    //在目标进程分配内存
     LPVOID pRemoteMem = VirtualAllocEx(
         this->CS2hProcess,
         NULL,
-        (this->Paths.CSAT.DLLToCS.CSATToolKit_dll.Path.wstring().size() + 1) * sizeof(wchar_t),
+        (this->Paths.CSAT.DLLToCS.CSATDLL_dll.Path.wstring().size() + 1) * sizeof(wchar_t),
         MEM_COMMIT | MEM_RESERVE,
         PAGE_READWRITE
     );
@@ -262,12 +262,12 @@ bool IPCer::Inject() {
         return false;
     }
 
-    // 2. 写入DLL路径
+    //写入DLL路径
     if (!WriteProcessMemory(
         this->CS2hProcess,
         pRemoteMem,
-        this->Paths.CSAT.DLLToCS.CSATToolKit_dll.Path.c_str(),
-        (this->Paths.CSAT.DLLToCS.CSATToolKit_dll.Path.wstring().size() + 1) * sizeof(wchar_t),
+        this->Paths.CSAT.DLLToCS.CSATDLL_dll.Path.c_str(),
+        (this->Paths.CSAT.DLLToCS.CSATDLL_dll.Path.wstring().size() + 1) * sizeof(wchar_t),
         NULL
     )) {
         VirtualFreeEx(this->CS2hProcess, pRemoteMem, 0, MEM_RELEASE);
@@ -275,7 +275,7 @@ bool IPCer::Inject() {
         return false;
     }
 
-    // 3. 获取LoadLibraryW地址
+    //获取LoadLibraryW地址
     HMODULE hKernel32 = GetModuleHandleW(L"kernel32.dll");
     if (!hKernel32) {
         this->Core->Console().PrintInfor("获取kernel32.dll模块失败！\n");
@@ -288,7 +288,7 @@ bool IPCer::Inject() {
         return false;
     }
 
-    // 4. 创建远程线程
+    //创建远程线程
     HANDLE hThread = CreateRemoteThread(
         this->CS2hProcess,
         NULL,
@@ -305,18 +305,18 @@ bool IPCer::Inject() {
         return false;
     }
 
-    // 5. 等待线程执行完成
+    //等待线程执行完成
     WaitForSingleObject(hThread, INFINITE);
 
-    // 6. 清理资源
+    //清理资源
     DWORD exitCode = 0;
     GetExitCodeThread(hThread, &exitCode);
 
     CloseHandle(hThread);
     VirtualFreeEx(this->CS2hProcess, pRemoteMem, 0, MEM_RELEASE);
 
-    // 7. 检查是否加载成功
-    // HMODULE 非零表示成功
+    //检查是否加载成功
+    //HMODULE 非零表示成功
 
     if (exitCode) {
         this->Core->Console().PrintInfor("注入DLL成功！\n");
