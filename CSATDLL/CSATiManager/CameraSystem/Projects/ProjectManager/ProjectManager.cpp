@@ -363,10 +363,10 @@ void ProjectManager::Project_ShowAllInLines() {
 void ProjectManager::Windows() {
 	if (this->OpenProjectDebugWindows) {
 		//项目调试窗口
-		this->Project_DebugWindowWithMenu();
+		this->Project_DebugWindow();
 		if (this->OpenProjectKCPackDebugWindow) {
 			//项目按键绑定调试窗口
-			this->Project_KCPack_DebugWindowWithMenu();
+			this->Project_KCPack_DebugWindow();
 		}
 		if (this->OpenProjectNameDebugWindow) {
 			//项目名称调试窗口
@@ -376,7 +376,7 @@ void ProjectManager::Windows() {
 	return;
 }
 
-void ProjectManager::Project_DebugWindowWithMenu() {
+void ProjectManager::Project_DebugWindow() {
 	//打开窗口
 	ImGui::Begin("项目调试", &this->OpenProjectDebugWindows);
 	//检查当前是否操作解决方案
@@ -450,7 +450,7 @@ void ProjectManager::Project_DebugWindowWithMenu() {
 	}
 	ImGui::End();
 }
-void ProjectManager::Project_KCPack_DebugWindowWithMenu() {
+void ProjectManager::Project_KCPack_DebugWindow() {
 	ImGui::Begin("按键绑定##Project", &this->OpenProjectKCPackDebugWindow);
 
 	if (this->ControllingProject) {

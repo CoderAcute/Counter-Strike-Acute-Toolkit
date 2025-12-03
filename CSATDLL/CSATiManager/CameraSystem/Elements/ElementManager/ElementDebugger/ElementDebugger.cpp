@@ -29,16 +29,16 @@ void ElementDebugger::DebugMenus(ElementBase* const pElement) {
         ImGui::Text("元素基类，无法调试");
         break;
     case ElementType::FreeCameraPath:
-        this->FreeCameraPath_DebugMenu(static_cast<FreeCameraPath*>(pElement));
+        this->DebugMenu_FreeCameraPath(static_cast<FreeCameraPath*>(pElement));
         break;
 	case ElementType::FirstPersonCameraPath:
-        this->FirstPersonCameraPath_DebugMenu(static_cast<FirstPersonCameraPath*>(pElement));
+        this->DebugMenu_FirstPersonCameraPath(static_cast<FirstPersonCameraPath*>(pElement));
 		break;
     }
 }
 //FreeCameeraPath
 
-void ElementDebugger::FreeCameraPath_DebugMenu(FreeCameraPath* const FreeCamPath) {
+void ElementDebugger::DebugMenu_FreeCameraPath(FreeCameraPath* const FreeCamPath) {
     ImGui::Text(FreeCamPath->GetMsg().c_str());
 
     if (ImGui::Button("添加关键帧") || this->CSATi->KT().CheckComboClick(VK_CAPITAL, 1)) {
@@ -109,19 +109,22 @@ void ElementDebugger::FreeCameraPath_DebugMenu(FreeCameraPath* const FreeCamPath
             FreeCamPath->CameraKeyFrames.erase(FreeCamPath->CameraKeyFrames.begin() + IndexForReset);
 
             FreeCamPath->AddKeyframe(std::move(tempKey));
+            PreIndex = -1;
         }
         if (ImGui::Button("删除")) {
             FreeCamPath->CameraKeyFrames.erase(FreeCamPath->CameraKeyFrames.begin() + IndexForReset);
             FreeCamPath->Refresh();
+            PreIndex = -1;
         }
         if (ImGui::Button("复制")) {
             FreeCamPath->AddKeyframe(FreeCamPath->GetKeyFrame(IndexForReset));
+            PreIndex = -1;
         }
     }
     PreIndex = IndexForReset;
 }
 
-void ElementDebugger::FirstPersonCameraPath_DebugMenu(FirstPersonCameraPath* const FirstPersonCamPath) {
+void ElementDebugger::DebugMenu_FirstPersonCameraPath(FirstPersonCameraPath* const FirstPersonCamPath) {
 	ImGui::Text(FirstPersonCamPath->GetMsg().c_str());
     ImGui::Separator();
 	static int TargetPlayerIndex = FirstPersonCamPath->TargetPlayerIndexInMap;

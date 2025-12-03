@@ -99,11 +99,11 @@ public:
     void Windows();
 private:
     //项目调试窗口及菜单
-    void Project_DebugWindowWithMenu();
+    void Project_DebugWindow();
 	//快捷键修改缓存
 	KeyCheckPack* Buffer_KCPack = nullptr;
 	//快捷键修改窗口
-    void Project_KCPack_DebugWindowWithMenu();
+    void Project_KCPack_DebugWindow();
     //名称修改缓存
     std::string Buffer_Name{};
     //名称修改窗口

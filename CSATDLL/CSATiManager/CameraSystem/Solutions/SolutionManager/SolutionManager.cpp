@@ -23,14 +23,7 @@ void SolutionManager::Init(CSATiManager* CSATi, CameraDrawer* CamDrawer, Element
 	this->AL3D = &this->CSATi->IAbstractLayer3D();
     this->KeyTracker = &this->CSATi->KT();
 }
-void SolutionManager::UpdateCurrentSolution() {
-    if (this->NeedUpdateCurrentSolution) {
-        this->CurrentSolution = this->Solution_Get(this->CurrentSolutionName);
-        this->NeedUpdateCurrentSolution = false;
-    }
-}
 void SolutionManager::VirtualMain() {
-    this->UpdateCurrentSolution();
     //判断需不需要刷新所有
     if (this->NeedRefresh) {
         this->Refresh();//全部刷新用于清理失效元素
@@ -50,7 +43,7 @@ void SolutionManager::Traversal() {
     for (const auto& pSolution : this->Solutions) {
         //快捷键播放处理
         if (this->KeyTracker->CheckWithPack(pSolution->KCPack)) {
-            this->Playing_SetSolution(pSolution, PlaybackMode::Reuse);//设置播放，偏移时间轴播放
+            this->Playing_SetSolution(pSolution.get(), PlaybackMode::Reuse);//设置播放，偏移时间轴播放
             this->Playing_Enable();//启动播放
         }
         //后续其它任务待补充
@@ -59,7 +52,7 @@ void SolutionManager::Traversal() {
 }
 void SolutionManager::Refresh() {
     //遍历
-    for (std::shared_ptr<Solution> pSolution : this->Solutions) {
+    for (auto& pSolution : this->Solutions) {
         pSolution->Refresh();
     }
 }
@@ -75,7 +68,7 @@ bool SolutionManager::Solution_Create(const std::string& Name) {
     //输出成功信息
     this->CSATi->IDebugger().AddSucc("成功创建解决方案！  解决方案名：" + Name);
     //创建新解决方案
-    std::shared_ptr newSolution = std::make_shared<Solution>(Name);
+    std::unique_ptr<Solution> newSolution = std::make_unique<Solution>(Name);
     Solutions.push_back(std::move(newSolution));
     
     return true;
@@ -168,7 +161,7 @@ bool SolutionManager::Solution_LoadFromXML(const std::filesystem::path& FullPath
         return false;
     }
     //制作解决方案
-    std::shared_ptr<Solution>NewSolution = std::make_shared<Solution>(NewSolutionName);
+    std::unique_ptr<Solution>NewSolution = std::make_unique<Solution>(NewSolutionName);
     if (!NewSolution->KCPack.ReadXMLNode(node_KeyCheckPack)) {
         this->CSATi->IDebugger().AddError("尝试从XML文件加载解决方案失败，在解析KeyCheckPack节点时发生了错误！ 文件路径：" + FullPath.string());
         return false;
@@ -273,18 +266,40 @@ bool SolutionManager::Solution_LoadFromXML(const std::filesystem::path& FullPath
     this->CSATi->IDebugger().AddSucc("---------------------");
     return true;
 }
-std::vector<std::shared_ptr<Solution>>::iterator SolutionManager::Solution_GetIterator(const std::string& Name) {
+std::vector<std::unique_ptr<Solution>>::iterator SolutionManager::Solution_GetIterator(const std::string& Name) {
     return std::find_if(this->Solutions.begin(), this->Solutions.end(),
-        [&Name](const std::shared_ptr<Solution>& solution) {
+        [&Name](const std::unique_ptr<Solution>& solution) {
             return solution->Name == Name;
         });
 }
-std::shared_ptr<Solution> SolutionManager::Solution_Get(const std::string& Name) {
+Solution* SolutionManager::Solution_Get(const std::string& Name) {
     auto it = this->Solution_GetIterator(Name);
     if (it == this->Solutions.end()) {
         return nullptr;
     }
-    return (*it);
+    return it->get();
+}
+bool SolutionManager::Solution_Delete(Solution* Solution) {
+    //检查是否正在播放此解决方案
+    if (this->Playing) {
+        if (this->Playing_pSolution == Solution) {
+            this->Playing_Disable(); //禁用播放
+        } 
+    }
+
+    //检查是否当前正在操作此解决方案
+    if (this->CurrentSolution) {
+        if(this->CurrentSolution == Solution)
+        this->CurrentSolution = nullptr;
+    }
+
+    //通过迭代器删除元素
+    std::string Name = std::move(Solution->Name);
+    auto it = this->Solution_GetIterator(Name);
+    this->Solutions.erase(it);
+
+    this->CSATi->IDebugger().AddSucc("成功删除解决方案：" + Name);
+    return true;
 }
 bool SolutionManager::Solution_Delete(const std::string& Name) {
     //安全检查
@@ -301,23 +316,7 @@ bool SolutionManager::Solution_Delete(const std::string& Name) {
         return false;
     }
 
-    //检查是否正在播放此解决方案
-    if (this->Playing && this->Playing_pSolution->Name == Name) {
-        this->Playing_Disable(); //禁用播放
-    }
-
-    //检查是否当前正在操作此解决方案
-    if (this->CurrentSolution && this->CurrentSolution->Name == Name) {
-        this->CurrentSolution = nullptr;
-        this->CurrentSolutionName = "";
-        //this->NeedUpdateCurrentElement = true;
-    }
-
-    //通过迭代器删除元素
-    Solutions.erase(it);
-
-    this->CSATi->IDebugger().AddSucc("成功删除解决方案：" + Name);
-    return true;
+    return this->Solution_Delete(it->get());
 }
 bool SolutionManager::Solution_ClearAll() {
     //禁用播放
@@ -325,8 +324,6 @@ bool SolutionManager::Solution_ClearAll() {
     this->Playing_pSolution = nullptr;
     //清空当前操作解决方案
     this->CurrentSolution = nullptr;
-    this->CurrentSolutionName = "";
-    this->NeedUpdateCurrentSolution = false;
 
     if (this->Solutions.empty()) {
         this->CSATi->IDebugger().AddWarning("当前没有任何解决方案，跳过清空操作！");
@@ -341,7 +338,7 @@ bool SolutionManager::Solution_ClearAll() {
 //功能
 
 void SolutionManager::Solution_ShowMsg(const std::string& Name) {
-    std::shared_ptr<Solution> solution = this->Solution_Get(Name);
+    Solution* solution = this->Solution_Get(Name);
     if (!solution) {
         this->CSATi->IDebugger().AddError("未找到解决方案：" + Name);
         return;
@@ -377,16 +374,15 @@ const std::vector<std::string>& SolutionManager::Solution_GetNames()const {
     }
     return SolutionsNames;
 }
-void SolutionManager::Solution_ShowInLine(std::shared_ptr<Solution> solution) {
+void SolutionManager::Solution_ShowInLine(Solution* solution) {
     if (!solution) {
         this->CSATi->IDebugger().AddError("解决方案指针为空，无法展示信息！");
         return;
     }
     ImGui::Text("|解决方案名称：");
     ImGui::SameLine();
-    if (ImGui::Button(solution->Name.data())) {
-        this->CurrentSolutionName = solution->Name;
-        this->NeedUpdateCurrentSolution = true;
+    if (ImGui::Button(solution->Name.c_str())) {
+        this->CurrentSolution = solution;
 		this->OpenSolutionDebugWindow = true;
     }
     ImGui::SameLine();
@@ -396,7 +392,7 @@ void SolutionManager::Solution_ShowInLine(std::shared_ptr<Solution> solution) {
 void SolutionManager::Solution_ShowAllInLines() {
     //使用迭代器遍历所有项目
     for (const auto& Solution : this->Solutions) {
-        this->Solution_ShowInLine(Solution);
+        this->Solution_ShowInLine(Solution.get());
     }
     return;
 }
@@ -461,9 +457,7 @@ void SolutionManager::Solution_DebugWindowWithMenu() {
         }
 
         if (ImGui::Button("删除当前解决方案")) {
-            this->Solution_Delete(this->CurrentSolutionName);
-            this->NeedUpdateCurrentSolution = true;
-            this->UpdateCurrentSolution();
+            this->Solution_Delete(this->CurrentSolution);
             this->OpenSolutionKCPackDebugWindow = false;
             ImGui::End();
             return;
@@ -671,7 +665,7 @@ void SolutionManager::Solution_Name_DebugWindow() {
 
 //切换相关
 
-bool SolutionManager::Playing_SetSolution(std::shared_ptr<Solution> const solution, const PlaybackMode Playmode) {
+bool SolutionManager::Playing_SetSolution(Solution* const solution, const PlaybackMode Playmode) {
     //这里只需要设置，播放结束解决方案本身自动归位
     if (!solution) {
         this->CSATi->IDebugger().AddError("找不到目标解决方案，可能是空指针");
@@ -693,7 +687,7 @@ bool SolutionManager::Playing_SetSolution(std::shared_ptr<Solution> const soluti
     return true;
 }
 bool SolutionManager::Playing_SetSolution(const std::string& SolutionName, const PlaybackMode Playmode) {
-    std::shared_ptr<Solution> pSolution = this->Solution_Get(SolutionName);
+    Solution* pSolution = this->Solution_Get(SolutionName);
     if (!pSolution) {
         return false;
     }

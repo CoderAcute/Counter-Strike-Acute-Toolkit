@@ -27,7 +27,7 @@ private:
 
 
 	//自由摄像机轨道调试菜单
-	void FreeCameraPath_DebugMenu(FreeCameraPath* const FreeCamPath);
+	void DebugMenu_FreeCameraPath(FreeCameraPath* const FreeCamPath);
 	//第一人称视角轨道调试菜单
-	void FirstPersonCameraPath_DebugMenu(FirstPersonCameraPath* const FirstPersonCameraPath);
+	void DebugMenu_FirstPersonCameraPath(FirstPersonCameraPath* const FirstPersonCameraPath);
 };
