@@ -113,11 +113,11 @@ public:
 	void Windows();
 private:
     //解决方案调试窗口及菜单
-	void Solution_DebugWindowWithMenu();
+	void Solution_DebugWindow();
     //按键调试缓存
     KeyCheckPack Buffer_KCPack{};
     //按键绑定菜单
-    void Solution_KCPack_DebugWindowWithMenu();
+    void Solution_KCPack_DebugWindow();
     //名称修改缓存
     std::string Buffer_Name{};
     //名称修改窗口

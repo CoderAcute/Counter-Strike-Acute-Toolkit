@@ -284,6 +284,7 @@ bool SolutionManager::Solution_Delete(Solution* Solution) {
     if (this->Playing) {
         if (this->Playing_pSolution == Solution) {
             this->Playing_Disable(); //禁用播放
+            this->Playing_pSolution = nullptr;
         } 
     }
 
@@ -294,7 +295,7 @@ bool SolutionManager::Solution_Delete(Solution* Solution) {
     }
 
     //通过迭代器删除元素
-    std::string Name = std::move(Solution->Name);
+    std::string Name = Solution->Name;
     auto it = this->Solution_GetIterator(Name);
     this->Solutions.erase(it);
 
@@ -401,9 +402,9 @@ void SolutionManager::Solution_ShowAllInLines() {
 
 void SolutionManager::Windows() {
     if (this->OpenSolutionDebugWindow) {
-        this->Solution_DebugWindowWithMenu();
+        this->Solution_DebugWindow();
         if (this->OpenSolutionKCPackDebugWindow) {
-            this->Solution_KCPack_DebugWindowWithMenu();
+            this->Solution_KCPack_DebugWindow();
         }
         if (this->OpenSolutionNameDebugWindow) {
             this->Solution_Name_DebugWindow();
@@ -411,7 +412,7 @@ void SolutionManager::Windows() {
     }
     
 }
-void SolutionManager::Solution_DebugWindowWithMenu() {
+void SolutionManager::Solution_DebugWindow() {
     //打开窗口
     ImGui::Begin("解决方案调试", &this->OpenSolutionDebugWindow);
     //检查当前是否操作解决方案
@@ -538,7 +539,7 @@ void SolutionManager::Solution_DebugWindowWithMenu() {
 
     ImGui::End();
 }
-void SolutionManager::Solution_KCPack_DebugWindowWithMenu(){
+void SolutionManager::Solution_KCPack_DebugWindow(){
     ImGui::Begin("按键绑定", &this->OpenSolutionKCPackDebugWindow);
 
     if (this->CurrentSolution) {

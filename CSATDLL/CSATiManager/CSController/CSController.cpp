@@ -13,9 +13,9 @@
 
 #include"../AbstractLayer3D/IAbstractLayer3D.hpp"
 
-//访问冲突fuck your mother
+//安全访问，避免访问冲突，可能在关闭游戏时报错，正常，因为本程序本身被中断了，来不及执行后面的内容
 template<typename T>
-bool SafeMemoryRead(T& Target, uintptr_t address) {
+inline bool SafeMemoryRead(T& Target, const uintptr_t& address) {
 	__try {
 		Target = *reinterpret_cast<T*>(address);
 		return true;
