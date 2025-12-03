@@ -2,7 +2,7 @@
 
 ## 概述
 
-CSAT（Counter-Strike: Acute Toolkit）是一款致力于降低《Counter-Strike 2》赛事制作门槛的一站式免费工具包，由大一开发者Acute个人独立开发。软件专注于运镜领域功能，为所有用户提供真正低门槛的、国产独立产权的、支持实时调试的、具有自动化功能的多功能OB软件。
+CSAT（Counter-Strike: Acute Toolkit）是一款致力于降低《Counter-Strike 2》赛事制作门槛的一站式免费工具包，由开发者Acute个人独立开发。软件专注于运镜领域功能，为所有用户提供具有即时模式UI的、真正低门槛的、支持实时调试的、具有自动化功能的多功能OB软件。
 
 ## 🚨 重要安全声明
 
@@ -71,7 +71,6 @@ CSAT（Counter-Strike: Acute Toolkit）是一款致力于降低《Counter-Strike
 ### 工作模式
 - 通过DLL注入创建线程，Hook D3D11的Present函数
 - 初始化阶段创建按键检测线程、消息总线线程、CS2交互线程
-- 所有组件通过VirtualMain和Menu的抽象，在CSATiManager处汇合管理
 
 ### 核心特性
 - 实时游戏状态分析
@@ -85,8 +84,13 @@ CSAT（Counter-Strike: Acute Toolkit）是一款致力于降低《Counter-Strike
 - MinHook
 - pugixml
 - cs2dumper
-
+- **所有许可证原始文本位于dist下的Licenses下的ThirdParty中，请自行翻阅**
+- ***警告：您在私下分发自己修改过的版本时，请务必也包含上述许可证，这非常重要！***
 ### CSAT许可证声明
+
+#### 许可证保留政策
+- ✅ 可以不附加我的许可证
+- ❌ 禁止修改我的许可证
 
 #### 商业使用政策
 - ✅ 允许自由商用，包括赛事直播、视频创作、教育培训等
