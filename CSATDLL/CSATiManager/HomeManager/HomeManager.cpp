@@ -25,7 +25,7 @@ void HomeManager::Menu() {
 	ImGui::Separator();
 
 	ImGui::Text("关于配置文件兼容性的说明：");
-	ImGui::BulletText("主配置文件：软件更新后可能需要调整，遇到问题我会帮你修复哦！");
+	ImGui::BulletText("部分配置文件：软件更新后可能需要调整，遇到问题我会帮你修复哦！");
 	ImGui::BulletText("元素配置与解决方案文件：这两类文件结构相对独立，将长期保持稳定～");
 
 	ImGui::Separator();
