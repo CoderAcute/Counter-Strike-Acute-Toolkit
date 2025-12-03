@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WorkspaceConfig>
+	<ElementConfig>
+		<PreviewDraw Enable="1" />
+		<PreviewOverride Enable="1" />
+	</ElementConfig>
+	<SolutionConfig>
+		<SolutionShortcutEnable Enable="1" />
+		<PlayingDraw Enable="1" />
+		<PlayingOverride Enable="1" />
+	</SolutionConfig>
+	<ProjectConfig>
+		<ProjectShortcutEnable Enable="1" />
+	</ProjectConfig>
+</WorkspaceConfig>

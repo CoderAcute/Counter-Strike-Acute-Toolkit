@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Element Type="FreeCameraPath" Name="CT_Begin_2">
+	<ElementMain DurationTime="4.80392456">
+		<KeyFrame Time="0" Px="-2001.71875" Py="-666.921143" Pz="-81.9962769" FOV="90" Pitch="4.1116991" Yaw="40.7088661" Roll="0.00529550016" />
+		<KeyFrame Time="1.23956299" Px="-2090.41846" Py="-681.085999" Pz="-76.5056305" FOV="90" Pitch="4.33169699" Yaw="44.8778801" Roll="0.00529496744" />
+		<KeyFrame Time="2.79779053" Px="-2179.51343" Py="-650.645081" Pz="-73.3283691" FOV="90" Pitch="4.32069349" Yaw="44.6578598" Roll="0.00529521191" />
+		<KeyFrame Time="4.80392456" Px="-2238.49902" Py="-637.510498" Pz="-70.6363525" FOV="90" Pitch="4.50769091" Yaw="37.4418449" Roll="0.00529408362" />
+	</ElementMain>
+</Element>

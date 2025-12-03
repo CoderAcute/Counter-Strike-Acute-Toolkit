@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Name="tttttttt">
+	<KeyCheckPack Usable="0" Ctrl="0" Shift="0" Alt="0" Key="0" ComboClick="0" />
+	<Config>
+		<AutoPlay>
+			<OnNewRound />
+			<OnRoundStart />
+			<OnRoundEnd />
+		</AutoPlay>
+	</Config>
+</Project>

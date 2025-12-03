@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="CSAT">
+      <UniqueIdentifier>{62e7c9b7-56d1-4cf3-b99a-d3c3c2616c6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\CSAT">
+      <UniqueIdentifier>{a96607b6-df97-4fe6-a7c5-04cee9a4c219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\Licenses">
+      <UniqueIdentifier>{5ea7501c-f686-455b-82b8-514878ce9dd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\Licenses\ThirdParty">
+      <UniqueIdentifier>{b498a876-4c66-445c-841f-d7df2bfd752b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\CSAT\DLLToCS">
+      <UniqueIdentifier>{335cea44-392c-458b-a32c-8b25c0ab8a56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\CSAT\Saves">
+      <UniqueIdentifier>{6573fadd-c35c-4d7e-9801-77f289f42ca4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CSAT\CSAT软件安全与风险声明.txt">
+      <Filter>CSAT</Filter>
+    </Text>
+    <Text Include="CSAT\README(For Coder).txt">
+      <Filter>CSAT</Filter>
+    </Text>
+    <Text Include="CSAT\README(For Everyone).txt">
+      <Filter>CSAT</Filter>
+    </Text>
+    <Text Include="CSAT\README(For User).txt">
+      <Filter>CSAT</Filter>
+    </Text>
+    <Text Include="CSAT\版本文档.txt">
+      <Filter>CSAT</Filter>
+    </Text>
+    <Text Include="CSAT\Licenses\ThirdParty\cs2_dumper_LICENSE.txt">
+      <Filter>CSAT\Licenses\ThirdParty</Filter>
+    </Text>
+    <Text Include="CSAT\Licenses\ThirdParty\imgui_LICENSE.txt">
+      <Filter>CSAT\Licenses\ThirdParty</Filter>
+    </Text>
+    <Text Include="CSAT\Licenses\ThirdParty\minhook_LICENSE.txt">
+      <Filter>CSAT\Licenses\ThirdParty</Filter>
+    </Text>
+    <Text Include="CSAT\Licenses\ThirdParty\pugixml_LICENSE.txt">
+      <Filter>CSAT\Licenses\ThirdParty</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
