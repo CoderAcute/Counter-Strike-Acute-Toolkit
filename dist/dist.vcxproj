@@ -128,10 +128,17 @@
     <Text Include="CSAT\Licenses\ThirdParty\imgui_LICENSE.txt" />
     <Text Include="CSAT\Licenses\ThirdParty\minhook_LICENSE.txt" />
     <Text Include="CSAT\Licenses\ThirdParty\pugixml_LICENSE.txt" />
-    <Text Include="CSAT\README(For Coder).txt" />
-    <Text Include="CSAT\README(For Everyone).txt" />
-    <Text Include="CSAT\README(For User).txt" />
     <Text Include="CSAT\版本文档.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CSAT\CSAT\CSAT.exe" />
+    <None Include="CSAT\CSAT\DLLToCS\CSATToolkit.dll" />
+    <None Include="CSAT\CSAT\Saves\Internal\Core\CSATUIConfig.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="CSAT\CSAT\Saves\External\Core\Configs\CSAT.xml" />
+    <Xml Include="CSAT\CSAT\Saves\External\Core\Configs\Paths.xml" />
+    <Xml Include="CSAT\CSAT\Saves\Internal\Core\CameraSystem\Workspaces\DefaultWorkspace\WorkspaceConfig.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

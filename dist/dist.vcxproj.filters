@@ -19,18 +19,36 @@
     <Filter Include="CSAT\CSAT\Saves">
       <UniqueIdentifier>{6573fadd-c35c-4d7e-9801-77f289f42ca4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CSAT\彩蛋">
+      <UniqueIdentifier>{70d9e511-f75e-4e42-bfd3-8f49a8b8e850}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\CSAT\Saves\Internal">
+      <UniqueIdentifier>{91cf04cc-13d7-41ed-817f-fb99b2035b49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\CSAT\Saves\External">
+      <UniqueIdentifier>{4468721d-2430-42a5-b6b9-42f96dc3ead6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\CSAT\Saves\External\Core">
+      <UniqueIdentifier>{46a338d7-dcbe-467f-9ae7-b2726a7e50da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\CSAT\Saves\External\Core\Configs">
+      <UniqueIdentifier>{aad4fd24-6472-4c35-8824-d82150b48555}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\CSAT\Saves\Internal\Core">
+      <UniqueIdentifier>{bd6bd7e8-7aab-4118-bf9e-c73d77de676f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\CSAT\Saves\Internal\Core\CameraSystem">
+      <UniqueIdentifier>{d656b035-308c-4882-b0a6-900ef3174895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\CSAT\Saves\Internal\Core\CameraSystem\Workspaces">
+      <UniqueIdentifier>{2690aff9-18ef-4065-876a-9cea05d5325a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSAT\CSAT\Saves\Internal\Core\CameraSystem\Workspaces\DefaultWorkspace">
+      <UniqueIdentifier>{fe1ae212-f1d7-4108-a036-8fbf85fce215}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="CSAT\CSAT软件安全与风险声明.txt">
-      <Filter>CSAT</Filter>
-    </Text>
-    <Text Include="CSAT\README(For Coder).txt">
-      <Filter>CSAT</Filter>
-    </Text>
-    <Text Include="CSAT\README(For Everyone).txt">
-      <Filter>CSAT</Filter>
-    </Text>
-    <Text Include="CSAT\README(For User).txt">
       <Filter>CSAT</Filter>
     </Text>
     <Text Include="CSAT\版本文档.txt">
@@ -48,5 +66,27 @@
     <Text Include="CSAT\Licenses\ThirdParty\pugixml_LICENSE.txt">
       <Filter>CSAT\Licenses\ThirdParty</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CSAT\CSAT\CSAT.exe">
+      <Filter>CSAT\CSAT</Filter>
+    </None>
+    <None Include="CSAT\CSAT\DLLToCS\CSATToolkit.dll">
+      <Filter>CSAT\CSAT\DLLToCS</Filter>
+    </None>
+    <None Include="CSAT\CSAT\Saves\Internal\Core\CSATUIConfig.ini">
+      <Filter>CSAT\CSAT\Saves\Internal\Core</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="CSAT\CSAT\Saves\External\Core\Configs\CSAT.xml">
+      <Filter>CSAT\CSAT\Saves\External\Core\Configs</Filter>
+    </Xml>
+    <Xml Include="CSAT\CSAT\Saves\External\Core\Configs\Paths.xml">
+      <Filter>CSAT\CSAT\Saves\External\Core\Configs</Filter>
+    </Xml>
+    <Xml Include="CSAT\CSAT\Saves\Internal\Core\CameraSystem\Workspaces\DefaultWorkspace\WorkspaceConfig.xml">
+      <Filter>CSAT\CSAT\Saves\Internal\Core\CameraSystem\Workspaces\DefaultWorkspace</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
