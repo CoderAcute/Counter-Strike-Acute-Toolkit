@@ -2,8 +2,8 @@
 <Element Type="FreeCameraPath" Name="ttt">
 	<ElementMain DurationTime="9">
 		<KeyFrame Time="0" Px="-61.6521149" Py="-623.074341" Pz="21.6737423" FOV="90" Pitch="4.71326208" Yaw="-8.16423607" Roll="-5.35419069e-08" />
-		<KeyFrame Time="3" Px="-472.669556" Py="-468.170349" Pz="68.5622101" FOV="90" Pitch="5.86870289" Yaw="-1.9437232" Roll="-2.88325737e-07" />
-		<KeyFrame Time="6" Px="-820.593811" Py="-459.74295" Pz="104.868156" FOV="90" Pitch="6.1775918" Yaw="5.13476324" Roll="9.39269057e-07" />
+		<KeyFrame Time="3" Px="-472.669556" Py="-468.170349" Pz="68.5622101" FOV="90" Pitch="5.86870289" Yaw="-1.9437232" Roll="-2.81620459e-07" />
+		<KeyFrame Time="6" Px="-820.593811" Py="-459.74295" Pz="104.868156" FOV="90" Pitch="6.1775918" Yaw="5.13476419" Roll="9.39269057e-07" />
 		<KeyFrame Time="9" Px="-1019.75299" Py="-617.886841" Pz="127.928368" FOV="90" Pitch="5.85724592" Yaw="13.5603294" Roll="7.50972504e-07" />
 	</ElementMain>
 </Element>

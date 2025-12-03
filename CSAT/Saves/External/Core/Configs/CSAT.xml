@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language>
+	<Menu>
+		<Menu0 id="Ctrl" text="控制">
+			<Menu1 id="InitCSAT" text="初始化CSAT"/>
+			<Menu1 id="InitCSAbout" text="初始化CS相关模块"/>
+			<Menu1 id="Inject" text="注入"/>
+			<Menu1 id="Exit" text="退出"/>
+		</Menu0>
+		<Menu0 id="Monitor" text="监控">
+			<Menu1 id="Debug" text="调试">
+				<Menu2 id="OpenConsole" text="打开控制台"/>
+				<Menu2 id="CloseConsole" text="关闭控制台"/>
+				<Menu2 id="ClearConsole" text="清空控制台"/>
+			</Menu1>
+			<Menu1 id="OpenSharedMemoryMonitor" text="共享内存监控"/>
+		</Menu0>
+		<Menu0 id="Language" text="语言">
+			<Menu1 id="SetLanguage" text="设定为">
+				<Menu2 id="LSetSpCn" text="简体中文"/>
+				<Menu2 id="LSetEn" text="English"/>
+			</Menu1>
+		</Menu0>
+	</Menu>
+	<Console>
+		<Title text="CSAT控制台"/>
+		<Prefixes>
+			<Infor text="[提示] "/>
+			<Warning text="[警告] "/>
+			<Error text="[错误] "/>
+		</Prefixes>
+	</Console>
+</Language>

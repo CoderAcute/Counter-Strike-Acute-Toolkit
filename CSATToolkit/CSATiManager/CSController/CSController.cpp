@@ -287,6 +287,7 @@ int CSController::BasicUpdate() {
 
 	this->ScreenHigh = 1080.0f;
 
+
 	this->Local.Player.Pawn.m_pObserverServices.Address = *reinterpret_cast<uintptr_t*>(this->Local.Player.Pawn.Address + cs2_dumper::schemas::client_dll::C_BasePlayerPawn::m_pObserverServices);
 	if (this->Local.Player.Pawn.m_pObserverServices.Address) {
 		this->Local.Player.Pawn.m_pObserverServices.m_iObserverMode = reinterpret_cast<uint8_t*>(this->Local.Player.Pawn.m_pObserverServices.Address + cs2_dumper::schemas::client_dll::CPlayer_ObserverServices::m_iObserverMode);

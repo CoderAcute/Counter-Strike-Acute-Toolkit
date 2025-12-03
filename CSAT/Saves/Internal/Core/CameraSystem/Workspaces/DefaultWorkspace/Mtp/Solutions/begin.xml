@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Solution Name="begin">
+	<SolutionMain DurationTime="25.3039246">
+		<KeyCheckPack Usable="1" Ctrl="0" Shift="0" Alt="1" Key="67" ComboClick="2" />
+		<Elements Size="3">
+			<Element Name="T_Begin_1" Offset="0" />
+			<Element Name="CT_Begin_1" Offset="7.5" />
+			<Element Name="CT_Begin_2" Offset="20.5" />
+		</Elements>
+	</SolutionMain>
+</Solution>

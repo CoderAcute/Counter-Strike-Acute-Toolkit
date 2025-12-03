@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Solution Name="ft">
+	<SolutionMain DurationTime="3.19999695">
+		<KeyCheckPack Usable="0" Ctrl="0" Shift="0" Alt="0" Key="0" ComboClick="0" />
+		<Elements Size="1">
+			<Element Name="entry" Offset="0" />
+		</Elements>
+	</SolutionMain>
+</Solution>
