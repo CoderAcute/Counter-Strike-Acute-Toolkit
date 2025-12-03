@@ -5,18 +5,18 @@
 bool FirstPersonCameraPath::Call(CSATMath::Frame& Frame, float Time, const PlaybackMode Mode)const {
     //如果不在理论影响范围内，应当直接返回而不做任何修改
     //是与被遍历的其它call一起工作
-    if (!this->TargetPlayerIndex)return false;
+    if (!this->TargetPlayerIndexInMap)return false;
 
 	if (!this->TimeReform(Time, Mode))return false;
 
     Frame.m_ui8TargetOBMode = 2;
 
-    Frame.m_ui8TargetPlayerIndex = this->TargetPlayerIndex;
+    Frame.m_ui8TargetPlayerIndexInMap = this->TargetPlayerIndexInMap;
 
     return true;
 }
 void FirstPersonCameraPath::Refresh() {
-    if (this->TargetPlayerIndex == 0) {
+    if (this->TargetPlayerIndexInMap == 0) {
         this->StartTime = 0;
         this->EndTime = 0;
         this->DurationTime = 0;
@@ -32,7 +32,7 @@ void FirstPersonCameraPath::Refresh() {
 std::string FirstPersonCameraPath::GetMsg()const {
     std::ostringstream oss;
     oss << this->GetBaseMsg()
-        << "\n目标玩家索引：" << static_cast<int>(this->TargetPlayerIndex);
+        << "\n目标玩家索引：" << static_cast<int>(this->TargetPlayerIndexInMap);
 
     return oss.str();
 }
@@ -44,7 +44,7 @@ bool FirstPersonCameraPath::ReadElementMain(const pugi::xml_node& node_ElementMa
         strRuselt = "找不到Target节点！ 元素名：" + this->Name;
         return false;
 	}
-	this->TargetPlayerIndex = static_cast<uint8_t>(node_Target.attribute("PlayerIndex").as_int());
+	this->TargetPlayerIndexInMap = static_cast<uint8_t>(node_Target.attribute("PlayerIndex").as_int());
 	this->StartTime = node_Target.attribute("StartTime").as_float();
 	this->EndTime = node_Target.attribute("EndTime").as_float();
 
@@ -64,7 +64,7 @@ bool FirstPersonCameraPath::SaveToXML(const std::filesystem::path& FolderPath, s
     
     pugi::xml_node node_Target = node_ElementMain.append_child("Target");
 
-	node_Target.append_attribute("PlayerIndex") = static_cast<int>(this->TargetPlayerIndex);
+	node_Target.append_attribute("PlayerIndex") = static_cast<int>(this->TargetPlayerIndexInMap);
 	node_Target.append_attribute("StartTime") = this->StartTime;
 	node_Target.append_attribute("EndTime") = this->EndTime;
 

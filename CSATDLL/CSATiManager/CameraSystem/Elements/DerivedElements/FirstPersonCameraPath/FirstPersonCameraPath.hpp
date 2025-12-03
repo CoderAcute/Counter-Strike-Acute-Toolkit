@@ -6,7 +6,7 @@ class FirstPersonCameraPath final :public ElementBase {
 public:
 	static constexpr ElementType TemplateType = ElementType::FirstPersonCameraPath;
 
-    uint8_t TargetPlayerIndex = 0;
+    uint8_t TargetPlayerIndexInMap = 0;
 
     //构造函数
     explicit FirstPersonCameraPath(const std::string& name) :

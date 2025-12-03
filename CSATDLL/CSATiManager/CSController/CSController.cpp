@@ -422,9 +422,9 @@ bool CSController::TrySetFrame(const CSATMath::Frame& frame) {
 	}
 	
 	if (frame.m_ui8TargetOBMode == 2) {
-		if (LastIndex != frame.m_ui8TargetPlayerIndex) {
-			this->Execute(("spec_mode 2;spec_player " + std::to_string(frame.m_ui8TargetPlayerIndex)).c_str());
-			LastIndex == frame.m_ui8TargetPlayerIndex;
+		if (LastIndex != frame.m_ui8TargetPlayerIndexInMap) {
+			this->Execute(("spec_mode 2;spec_player " + std::to_string(frame.m_ui8TargetPlayerIndexInMap)).c_str());
+			LastIndex == frame.m_ui8TargetPlayerIndexInMap;
 		}
 	}
 

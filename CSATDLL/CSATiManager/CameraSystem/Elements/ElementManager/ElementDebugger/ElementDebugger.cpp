@@ -124,10 +124,10 @@ void ElementDebugger::FreeCameraPath_DebugMenu(FreeCameraPath* const FreeCamPath
 void ElementDebugger::FirstPersonCameraPath_DebugMenu(FirstPersonCameraPath* const FirstPersonCamPath) {
 	ImGui::Text(FirstPersonCamPath->GetMsg().c_str());
     ImGui::Separator();
-	static int TargetPlayerIndex = FirstPersonCamPath->TargetPlayerIndex;
+	static int TargetPlayerIndex = FirstPersonCamPath->TargetPlayerIndexInMap;
     ImGui::SliderInt("目标玩家索引", &TargetPlayerIndex, 0, 10);
 	if (ImGui::Button("应用索引")) {
-        FirstPersonCamPath->TargetPlayerIndex = static_cast<uint8_t>(TargetPlayerIndex);
+        FirstPersonCamPath->TargetPlayerIndexInMap = static_cast<uint8_t>(TargetPlayerIndex);
         FirstPersonCamPath->Refresh();
 	}
     static float StartBuffer;
@@ -140,8 +140,7 @@ void ElementDebugger::FirstPersonCameraPath_DebugMenu(FirstPersonCameraPath* con
         FirstPersonCamPath->Refresh();
     }
     if (ImGui::Button("测试切换")) {
-		this->AL3D->ExecuteCommand("spec_mode 2");
-		this->AL3D->ExecuteCommand("spec_player " + std::to_string(FirstPersonCamPath->TargetPlayerIndex));
+        this->AL3D->ExecuteCommand("spec_mode 2;spec_player " + std::to_string(FirstPersonCamPath->TargetPlayerIndexInMap));
     }
 
     return;

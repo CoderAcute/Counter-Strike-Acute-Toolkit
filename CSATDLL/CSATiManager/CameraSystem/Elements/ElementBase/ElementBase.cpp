@@ -55,10 +55,19 @@ bool ElementBase::TimeReform(float& Time, const PlaybackMode Mode)const {
     return true;
 }
 
-bool ElementBase::DrawBase(CameraDrawer* CamDrawer, const float* Matrix, const float WinWidth, const float WinHeight)const {
+void ElementBase::CloseDraw() {
+    this->IfDraw = false;
+    return;
+}
+bool ElementBase::OpenDraw() {
     if (!this->Drawable) {
         return false;
     }
+    this->IfDraw = true;
+    return true;
+}
+
+bool ElementBase::DrawBase(CameraDrawer* CamDrawer, const float* Matrix, const float WinWidth, const float WinHeight)const {
     if (!this->IfDraw) {
         return false;
     }

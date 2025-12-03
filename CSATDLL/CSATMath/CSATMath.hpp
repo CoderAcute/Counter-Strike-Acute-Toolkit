@@ -142,7 +142,7 @@ namespace CSATMath {
         SpatialState SpatialState{};
 
         uint8_t m_ui8TargetOBMode = 4;
-        uint8_t m_ui8TargetPlayerIndex = 0;
+        uint8_t m_ui8TargetPlayerIndexInMap = 0;
 
         int Depth{ 0 };
         float GameSpeed{};

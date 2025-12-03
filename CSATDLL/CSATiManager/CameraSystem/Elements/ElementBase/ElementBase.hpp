@@ -60,9 +60,9 @@ protected:
     //需要被删除
     bool NeedBeDelete = false;
     
-    //能否绘制
+    //能否绘制（默认不能）
     bool Drawable = false;
-    //是否绘制
+    //是否绘制（默认不绘制）
     bool IfDraw = false;
 public:
     //构造函数
@@ -100,6 +100,10 @@ public:
     //调用函数（虚）（Mode:0为默认，1自动减去头时间）
     virtual bool Call(CSATMath::Frame& Frame, float Time, const PlaybackMode Mode)const = 0;
 
+    //关闭绘制
+    void CloseDraw();
+    //尝试打开绘制接口
+    bool OpenDraw();
     //绘制函数入口
     bool DrawBase(CameraDrawer* CamDrawer, const float* Matrix, const float WinWidth, const float WinHeight)const;
     //绘制函数（虚），各个元素按需实现
