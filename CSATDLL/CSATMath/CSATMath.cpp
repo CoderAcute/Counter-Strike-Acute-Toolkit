@@ -175,7 +175,7 @@ void CSATMath::CSDirToEuler(const DirectX::XMFLOAT3& Dir, DirectX::XMFLOAT3& Eul
 }
 
 
-bool CSATMath::XMWorldToScreen(const DirectX::XMFLOAT3& pWorldPos, DirectX::XMFLOAT2& pScreenPos, float* pMatrixPtr, const float pWinWidth, const float pWinHeight)
+bool CSATMath::XMWorldToScreen(const DirectX::XMFLOAT3& pWorldPos, DirectX::XMFLOAT2& pScreenPos, const float* pMatrixPtr, const float pWinWidth, const float pWinHeight)
 {
 	if (!pMatrixPtr) return false;
 

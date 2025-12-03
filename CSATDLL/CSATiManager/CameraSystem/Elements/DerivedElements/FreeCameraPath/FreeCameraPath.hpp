@@ -5,6 +5,8 @@
 class ElementManager;
 class ElementDebugger;
 
+class CameraDrawer;
+
 //自由摄像机轨道，继承自Element
 class FreeCameraPath final :public ElementBase {
     //友元声明
@@ -28,6 +30,8 @@ public:
     void Refresh()override final;
     //调用函数（虚）（Mode:0为默认，1自动减去头时间）
     bool Call(CSATMath::Frame& Frame, float Time, const PlaybackMode Mode)const override final;
+    //绘制函数（虚），各个元素按需实现
+    bool Draw(CameraDrawer* CamDrawer, const float* Matrix, const float WinWidth, const float WinHeight)const override;
     //获取详细信息（虚）
     std::string GetMsg()const override final;
     //加载信息函数（虚），注意这不是创建而是加载

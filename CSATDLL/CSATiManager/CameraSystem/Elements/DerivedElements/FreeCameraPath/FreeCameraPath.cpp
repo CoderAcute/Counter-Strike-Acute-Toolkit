@@ -1,7 +1,8 @@
 ﻿#include"FreeCameraPath.hpp"
 
+#include"../../../CameraDrawer/CameraDrawer.hpp"
 #include"../../../../../ThirdParty/All_pugixml.hpp"
-//#include"../../../../../ThirdParty/All_ImGui.hpp"
+#include"../../../../../ThirdParty/All_ImGui.hpp"
 
 //拷贝语义版
 void FreeCameraPath::AddKeyframe(const CSATMath::CameraKeyFrame& KeyFrame) {
@@ -119,6 +120,50 @@ bool FreeCameraPath::Call(CSATMath::Frame& Frame, float Time, const PlaybackMode
     DirectX::XMFLOAT3 output = Frame.SpatialState.GetPosition();
     //ImGui::Text(("X: " + std::to_string(output.x) + "  Y: " + std::to_string(output.y) + "  Z: " + std::to_string(output.z)).c_str());
 
+    return true;
+}
+//绘制函数（虚），各个元素按需实现
+bool FreeCameraPath::Draw(CameraDrawer* CamDrawer, const float* Matrix, const float WinWidth, const float WinHeight)const {
+    const std::vector<CSATMath::CameraKeyFrame>& Frames = this->GetAllKeyFrames();
+    int Size = Frames.size();
+
+    // 存储上一个关键帧的位置（用于连线）
+    DirectX::XMFLOAT3 prevPosition{};
+    bool firstFrame = true;
+
+    // 遍历当前路径的所有关键帧
+    for (int i = 0; i < Size; ++i) {
+        if (!Matrix)return false;
+        const auto& Frame = Frames.at(i);
+        // 绘制关键帧的摄像机
+        std::string label = this->Name + " #" + std::to_string(i);
+        CamDrawer->DrawCamera(Frame.SpatialState.GetPosition(), Frame.SpatialState.GetRotationEuler(), label.c_str());
+
+        // 获取ImDrawList用于绘制连线
+        ImDrawList* drawList = ImGui::GetBackgroundDrawList();
+
+        // 如果不是第一个关键帧，绘制连线
+        if (!firstFrame) {
+            // 将3D位置转换为屏幕坐标
+            DirectX::XMFLOAT2 prevScreenPos, currentScreenPos;
+
+            // 使用CameraDrawer中的转换方法
+            CSATMath::XMWorldToScreen(prevPosition, prevScreenPos, Matrix, WinWidth, WinHeight);
+
+            CSATMath::XMWorldToScreen(Frame.SpatialState.GetPosition(), currentScreenPos, Matrix, WinWidth, WinHeight);
+
+            // 绘制连线
+            drawList->AddLine(
+                ImVec2(prevScreenPos.x, prevScreenPos.y),
+                ImVec2(currentScreenPos.x, currentScreenPos.y),
+                IM_COL32(0, 255, 255, 255), // 青色连线
+                2.0f // 线宽
+            );
+        }
+        // 保存当前位置用于下一次连线
+        prevPosition = Frame.SpatialState.GetPosition();
+        firstFrame = false;
+    }
     return true;
 }
 

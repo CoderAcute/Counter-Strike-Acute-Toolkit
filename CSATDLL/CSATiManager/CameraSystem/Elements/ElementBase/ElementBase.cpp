@@ -55,6 +55,19 @@ bool ElementBase::TimeReform(float& Time, const PlaybackMode Mode)const {
     return true;
 }
 
+bool ElementBase::DrawBase(CameraDrawer* CamDrawer, const float* Matrix, const float WinWidth, const float WinHeight)const {
+    if (!this->Drawable) {
+        return false;
+    }
+    if (!this->IfDraw) {
+        return false;
+    }
+    return this->Draw(CamDrawer, Matrix, WinWidth, WinHeight);
+}
+bool ElementBase::Draw(CameraDrawer* CamDrawer, const float* Matrix, const float WinWidth, const float WinHeight)const {
+    return true;
+}
+
 bool ElementBase::SaveBase(pugi::xml_document& doc, pugi::xml_node& node_ElementMain, std::string& strRuselt)const {
     if (this->Name.empty()) {
         strRuselt = "元素名为空，无法保存元素到XML文件！";

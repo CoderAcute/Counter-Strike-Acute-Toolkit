@@ -49,16 +49,7 @@ void ElementManager::VirtualMain() {
     if (Size) {
         //通过迭代器绘制所有可以绘制的元素
         for (auto& elem : this->Elements) {
-            if (elem->Drawable) {
-				//动态转换为具体类型
-                if (elem->Type == ElementType::FreeCameraPath) {
-                    std::shared_ptr<FreeCameraPath> Path = std::static_pointer_cast<FreeCameraPath>(elem);
-                    if (Path && Path->IfDraw) {
-                        this->ElementDebugger->FreeCameraPath_Draw(Path);
-                    }
-				}
-
-            }
+            elem->DrawBase(this->CamDrawer, this->AL3D->GetViewMatrix(), this->AL3D->GetWinWidth(), this->AL3D->GetWinHeight());
         }
     }
 

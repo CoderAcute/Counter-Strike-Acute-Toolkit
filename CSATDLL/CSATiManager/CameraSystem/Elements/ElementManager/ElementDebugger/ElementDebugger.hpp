@@ -24,12 +24,10 @@ private:
 	//调试菜单入口点
 	void DebugMenus(ElementBase* const pElement);
 
-	
-	//自由摄像机轨道
-	bool FreeCameraPath_Draw(const std::shared_ptr<FreeCameraPath> const Path);
+
+
 	//自由摄像机轨道调试菜单
 	void FreeCameraPath_DebugMenu(FreeCameraPath* const FreeCamPath);
-
 	//第一人称视角轨道调试菜单
 	void FirstPersonCameraPath_DebugMenu(FirstPersonCameraPath* const FreeCamPath);
 };

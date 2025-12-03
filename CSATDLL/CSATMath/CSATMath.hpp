@@ -155,7 +155,7 @@ namespace CSATMath {
     void CSQuatToEuler(const DirectX::XMFLOAT4& Quat, DirectX::XMFLOAT3& Euler);
     //只修改Pitch和Yaw，不修改Roll
     void CSDirToEuler(const DirectX::XMFLOAT3& Dir, DirectX::XMFLOAT3& Euler);
-    bool XMWorldToScreen(const DirectX::XMFLOAT3& pWorldPos, DirectX::XMFLOAT2& pScreenPos, float* pMatrixPtr, const float pWinWidth, const float pWinHeight);
+    bool XMWorldToScreen(const DirectX::XMFLOAT3& pWorldPos, DirectX::XMFLOAT2& pScreenPos, const float* pMatrixPtr, const float pWinWidth, const float pWinHeight);
 
     DirectX::XMFLOAT3 RotatePoint(
         const DirectX::XMFLOAT3& inputPoint,

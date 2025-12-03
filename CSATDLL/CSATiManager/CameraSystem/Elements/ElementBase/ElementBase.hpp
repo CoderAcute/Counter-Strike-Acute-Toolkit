@@ -5,6 +5,9 @@
 
 #include<string>
 #include<filesystem>
+
+class CameraDrawer;
+
 //定义元素的类型
 enum class ElementType :int {
     None = -1,//错误类型
@@ -96,6 +99,11 @@ public:
     virtual ~ElementBase() = default;
     //调用函数（虚）（Mode:0为默认，1自动减去头时间）
     virtual bool Call(CSATMath::Frame& Frame, float Time, const PlaybackMode Mode)const = 0;
+
+    //绘制函数入口
+    bool DrawBase(CameraDrawer* CamDrawer, const float* Matrix, const float WinWidth, const float WinHeight)const;
+    //绘制函数（虚），各个元素按需实现
+    virtual bool Draw(CameraDrawer* CamDrawer, const float* Matrix, const float WinWidth, const float WinHeight)const;
     //刷新状态（虚）
     virtual void Refresh() = 0;
     //信息获取函数（虚）

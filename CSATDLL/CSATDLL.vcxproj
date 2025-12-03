@@ -75,7 +75,7 @@
     <OutDir>..\dist\CSAT\CSAT\DLLToCS</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\..\..\CSAT\DLLToCS</OutDir>
+    <OutDir>..\dist\CSAT\CSAT\DLLToCS</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
