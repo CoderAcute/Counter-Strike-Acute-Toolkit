@@ -54,8 +54,7 @@ void CSController::Execute(const char* cmd) {
 	return;
 }
 
-void CSController::SetViewAnglesEuler(const DirectX::XMFLOAT3& Angles) {
-	if (!this->SafeRead)return;
+void CSController::SetLocalViewAngle(const DirectX::XMFLOAT3& Angles) {
 	*this->Local.dwViewAngles = Angles;
 	return;
 }
@@ -400,20 +399,16 @@ int CSController::TryGetMsg() {
 
 	return 0;
 }
-bool CSController::TrySetFrame(const CSATMath::Frame& frame) {
-	if (!this->SafeRead)return false;
-	std::unique_lock<std::shared_mutex> lock(this->BasicMtx);
-	static uint8_t LastIndex = 0;
-	if (frame.m_ui8TargetOBMode == 4) {
+bool CSController::SetLocalFrame(const CSATMath::Frame& frame) {
+	static uint8_t LastIndex;
+	if (frame.TargetOBMode == 4) {
 		if (*this->Local.Player.Pawn.m_pObserverServices.m_iObserverMode == 4) {
-			DirectX::XMFLOAT4 PosAndFOV = frame.SpatialState.GetPositionAndFOV();
-			DirectX::XMFLOAT3 RotEuler = frame.SpatialState.GetRotationEuler();
+			DirectX::XMFLOAT4 PosAndFOV = frame.GetPositionAndFOV();
+			DirectX::XMFLOAT3 RotEuler = frame.GetRotationEuler();
 
-			this->Local.Player.Pawn.GameSceneNode.pPosition->x = PosAndFOV.x;
-			this->Local.Player.Pawn.GameSceneNode.pPosition->y = PosAndFOV.y;
-			this->Local.Player.Pawn.GameSceneNode.pPosition->z = PosAndFOV.z;
+			this->SetLocalPosition(PosAndFOV);
 			//this->TrySetFOV(PosAndFOV.w);
-			this->SetViewAnglesEuler(RotEuler);
+			this->SetLocalViewAngle(RotEuler);
 		}
 		else {
 			this->Execute("spec_mode 4");
@@ -421,18 +416,30 @@ bool CSController::TrySetFrame(const CSATMath::Frame& frame) {
 		LastIndex = 0;
 	}
 	
-	if (frame.m_ui8TargetOBMode == 2) {
-		if (LastIndex != frame.m_ui8TargetPlayerIndexInMap) {
-			this->Execute(("spec_mode 2;spec_player " + std::to_string(frame.m_ui8TargetPlayerIndexInMap)).c_str());
-			LastIndex == frame.m_ui8TargetPlayerIndexInMap;
+	if (frame.TargetOBMode == 2) {
+		if (LastIndex != frame.TargetPlayerIndexInMap) {
+			this->Execute(("spec_mode 2;spec_player " + std::to_string(frame.TargetPlayerIndexInMap)).c_str());
+			LastIndex = frame.TargetPlayerIndexInMap;
 		}
 	}
 
 
 	return true;
 }
+bool CSController::SetLocalPosition(const DirectX::XMFLOAT4& PosAndFOV) {
+	__try {
+		this->Local.Player.Pawn.GameSceneNode.pPosition->x = PosAndFOV.x;
+		this->Local.Player.Pawn.GameSceneNode.pPosition->y = PosAndFOV.y;
+		this->Local.Player.Pawn.GameSceneNode.pPosition->z = PosAndFOV.z;
 
-void CSController::TrySetFOV(float FOV) {
+		return true;
+	}
+	__except (EXCEPTION_EXECUTE_HANDLER) {
+		return false;
+	}
+}
+
+void CSController::SetLocalFOV(float FOV) {
 	if (this->SafeRead) {
 		char cmd[64];
 		snprintf(cmd, sizeof(cmd), "fov_cs_debug %.6f", FOV);
@@ -525,7 +532,7 @@ void CSController::AimbotMain() {
 	ImGui::Text(to_string(LocalEyePos).c_str());
 	CSATMath::CSDirToEuler(dir, TargetViewAngles);
 	
-	this->SetViewAnglesEuler(TargetViewAngles);
+	this->SetLocalViewAngle(TargetViewAngles);
 }
 
 std::ostringstream CSController::GetLocalPlayerMsg() {

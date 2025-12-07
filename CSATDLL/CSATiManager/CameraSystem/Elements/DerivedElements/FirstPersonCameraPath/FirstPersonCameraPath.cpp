@@ -9,9 +9,9 @@ bool FirstPersonCameraPath::Call(CSATMath::Frame& Frame, float Time, const Playb
 
 	if (!this->TimeReform(Time, Mode))return false;
 
-    Frame.m_ui8TargetOBMode = 2;
+    Frame.TargetOBMode = 2;
 
-    Frame.m_ui8TargetPlayerIndexInMap = this->TargetPlayerIndexInMap;
+    Frame.TargetPlayerIndexInMap = this->TargetPlayerIndexInMap;
 
     return true;
 }

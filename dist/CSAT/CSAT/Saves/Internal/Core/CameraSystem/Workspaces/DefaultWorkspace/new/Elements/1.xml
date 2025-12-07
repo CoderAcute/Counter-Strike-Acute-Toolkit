@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Element Type="FirstPersonCameraPath" Name="1">
+	<ElementMain DurationTime="1.55297852">
+		<Target PlayerIndex="3" StartTime="1501.44702" EndTime="1503" />
+	</ElementMain>
+</Element>

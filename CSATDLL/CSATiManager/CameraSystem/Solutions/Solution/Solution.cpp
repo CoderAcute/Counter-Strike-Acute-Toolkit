@@ -149,6 +149,28 @@ void Solution::Refresh() {
 void Solution::SetSolutionOffset(const float Offset) {
     this->SolutionOffset = Offset;
 }
+bool Solution::TimeLineGenerate() {
+    this->Refresh();
+
+    if (this->Elements.empty()) {
+        return false;
+    }
+    float TimeReference = this->Elements[0].Offset;
+    for (int i = 0; i < this->Elements.size(); ++i) {
+        //先获取最早的元素的开始时间作为参考时间
+        if (TimeReference > this->Elements[i].Element->GetStartTime()) {
+            TimeReference = this->Elements[i].Element->GetStartTime();
+        }
+    }
+    //然后设置元素偏移
+    for (int i = 0; i < this->Elements.size(); ++i) {
+        this->Elements[i].Offset = this->Elements[i].Element->GetStartTime() - TimeReference;
+    }
+
+    this->Refresh();
+
+    return true;
+}
 std::string Solution::GetMsg() {
     this->Refresh();
 

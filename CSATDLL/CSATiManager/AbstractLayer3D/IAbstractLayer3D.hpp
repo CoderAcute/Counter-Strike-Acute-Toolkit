@@ -49,7 +49,7 @@ public:
 	virtual float GetWinHeight()const = 0;
 
 
-	virtual bool TrySetFrame(const CSATMath::Frame& frame) = 0;
+	virtual bool SetLocalFrame(const CSATMath::Frame& frame) = 0;
 	//Ö´ÐÐÃüÁî
 	virtual bool ExecuteCommand(const char* command) = 0;
 	virtual bool ExecuteCommand(const std::string& command) = 0;

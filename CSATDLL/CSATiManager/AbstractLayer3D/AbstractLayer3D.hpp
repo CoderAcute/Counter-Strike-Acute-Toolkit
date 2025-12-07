@@ -26,7 +26,7 @@ public:
 	float* GetViewMatrix()const override;
 	float GetWinWidth()const override;
 	float GetWinHeight()const override;
-	bool TrySetFrame(const CSATMath::Frame& frame)override;
+	bool SetLocalFrame(const CSATMath::Frame& frame)override;
 	bool ExecuteCommand(const char* command)override;
 	bool ExecuteCommand(const std::string& command)override;
 	bool UpdatePlayerMsg(D_Player&& PlayMsg)override;

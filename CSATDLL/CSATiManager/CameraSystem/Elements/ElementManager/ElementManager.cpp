@@ -59,7 +59,7 @@ void ElementManager::VirtualMain() {
             //自由摄像机轨道预览
             if (this->Preview_CurrentElement->Type == ElementType::FreeCameraPath) {
                 if (this->Config.PreviewOverride) {
-                    this->AL3D->TrySetFrame(frame);
+                    this->AL3D->SetLocalFrame(frame);
                 }
                 else if (this->Config.PreviewDraw) {
                     this->CamDrawer->DrawFrameCamera(frame, "预览摄像机");

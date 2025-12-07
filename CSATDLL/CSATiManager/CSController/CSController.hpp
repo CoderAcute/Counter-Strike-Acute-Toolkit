@@ -113,8 +113,7 @@ public:
 
     std::atomic<int> GetMsgResult = 0;
 	int TryGetMsg();
-    bool TrySetFrame(const CSATMath::Frame& frame);
-    void TrySetFOV(float FOV);
+    
 
     CSATMath::SpatialState CSGetLocalSpatialState();
     DirectX::XMFLOAT3 CSGetPosition();
@@ -130,8 +129,11 @@ public:
 
 
 	
-	
-	void SetViewAnglesEuler(const DirectX::XMFLOAT3& Angles);
+	//设置本地欧拉角
+	void SetLocalViewAngle(const DirectX::XMFLOAT3& Angles);
+	bool SetLocalFrame(const CSATMath::Frame& frame);
+	void SetLocalFOV(float FOV);
+	bool SetLocalPosition(const DirectX::XMFLOAT4& PosAndFOV);
 	
     bool AimbotEnable = false;
     void AimbotMain();

@@ -74,6 +74,8 @@ public:
     bool Call(CSATMath::Frame& frame, const float time, const float PlayBackRate, bool& isPlaying);
     //设置解决方案偏移
     void SetSolutionOffset(const float Offset);
+    //按组合模式各个元素绝对启动时间生成复用模式的偏移
+    bool TimeLineGenerate();
     //刷新（会移除已经删除的元素）
     void Refresh();
     //展示信息

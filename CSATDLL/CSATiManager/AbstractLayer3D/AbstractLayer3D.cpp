@@ -41,8 +41,8 @@ float AbstractLayer3D::GetWinWidth()const {
 float AbstractLayer3D::GetWinHeight()const {
 	return 1080.0f;
 }
-bool AbstractLayer3D::TrySetFrame(const CSATMath::Frame& frame) {
-	return this->CS->TrySetFrame(frame);
+bool AbstractLayer3D::SetLocalFrame(const CSATMath::Frame& frame) {
+	return this->CS->SetLocalFrame(frame);
 }
 bool AbstractLayer3D::ExecuteCommand(const char* command) {
 	this->CS->Execute(command);

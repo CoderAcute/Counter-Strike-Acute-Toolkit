@@ -115,9 +115,9 @@ bool FreeCameraPath::Call(CSATMath::Frame& Frame, float Time, const PlaybackMode
     DirectX::XMVECTOR rotation = DirectX::XMQuaternionSquad(k1.SpatialState.RotationQuat, s1, s2, s3, segmentTime);
     Frame.SpatialState.RotationQuat = DirectX::XMQuaternionNormalize(rotation);
 
-    Frame.m_ui8TargetOBMode = 4;
+    Frame.TargetOBMode = 4;
 
-    DirectX::XMFLOAT3 output = Frame.SpatialState.GetPosition();
+    //DirectX::XMFLOAT3 output = Frame.SpatialState.GetPosition();
     //ImGui::Text(("X: " + std::to_string(output.x) + "  Y: " + std::to_string(output.y) + "  Z: " + std::to_string(output.z)).c_str());
 
     return true;

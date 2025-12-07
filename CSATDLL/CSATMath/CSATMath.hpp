@@ -141,13 +141,30 @@ namespace CSATMath {
     public:
         SpatialState SpatialState{};
 
-        uint8_t m_ui8TargetOBMode = 4;
-        uint8_t m_ui8TargetPlayerIndexInMap = 0;
+        uint8_t TargetOBMode = 4;
+        uint8_t TargetPlayerIndexInMap = 0;
 
         int Depth{ 0 };
         float GameSpeed{};
 
         std::string GetMsg()const;
+
+        DirectX::XMFLOAT3 GetPosition()const {
+            return this->SpatialState.GetPosition();
+        }
+        DirectX::XMFLOAT4 GetRotationQuat()const {
+            return this->SpatialState.GetRotationQuat();
+        }
+        DirectX::XMFLOAT3 GetRotationEuler()const {
+            return this->SpatialState.GetRotationEuler();
+        }
+        float GetFOV()const {
+            return this->SpatialState.GetFOV();
+        }
+
+        DirectX::XMFLOAT4 GetPositionAndFOV()const {
+            return this->SpatialState.GetPositionAndFOV();
+        }
     };
 
     void CSEulerToQuat(const DirectX::XMFLOAT3& Euler, DirectX::XMFLOAT4& QuaT);

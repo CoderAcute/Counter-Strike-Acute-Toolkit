@@ -469,17 +469,7 @@ void SolutionManager::Solution_DebugWindow() {
 			this->Playing_Enable();
         }
         if (ImGui::Button("按组合模式生成时间偏移")) {
-			float TimeReference = 0.0f;
-            for (int i = 0; i < this->CurrentSolution->Elements.size(); ++i) {
-				//先获取第一个元素的开始时间作为参考时间
-                if (TimeReference < this->CurrentSolution->Elements[i].Element->GetStartTime()) {
-                    TimeReference = this->CurrentSolution->Elements[i].Element->GetStartTime();
-                }
-            }
-            //然后设置元素偏移
-            for (int i = 0; i < this->CurrentSolution->Elements.size(); ++i) {
-                this->CurrentSolution->Elements[i].Offset = TimeReference;
-			}
+            this->CurrentSolution->TimeLineGenerate();
         }
         if (ImGui::Button("播放当前解决方案（元素按解决方案指定偏移进行播放，元素本身时间头被忽略）")) {
             this->Playing_SetSolution(this->CurrentSolution, PlaybackMode::Reuse);
@@ -725,7 +715,7 @@ bool SolutionManager::Playing_Call() {
         if (this->Playing_pSolution->Call(frame, this->AL3D->GetTime(), this->PlaybackRate, this->Playing)) {
             //ImGui::Text("有插值结果");
             if (this->Config.PlayingOverride) {
-                this->AL3D->TrySetFrame(frame);
+                this->AL3D->SetLocalFrame(frame);
             }
             else if (this->Config.PlayingDraw) {
                 this->CamDrawer->DrawFrameCamera(frame, "解决方案插值摄像机");
