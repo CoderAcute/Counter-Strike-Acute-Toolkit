@@ -12,6 +12,7 @@
 #include"../GlobalVars/GlobalVars.hpp"
 
 #include"../AbstractLayer3D/IAbstractLayer3D.hpp"
+#include"../KeyTracker/KeyTracker.hpp"
 
 //安全访问，避免访问冲突，可能在关闭游戏时报错，正常，因为本程序本身被中断了，来不及执行后面的内容
 template<typename T>
@@ -185,13 +186,123 @@ uintptr_t CSController::GetEntityPawnFromHandle(uint32_t uHandle) {
 	}
 }
 
+convar* ccvar::FindVarByIndex(uint64_t index) {
+	return vmt::CallVirtual<convar*>(43, this, index);//一开始是37
+}
+convar* ccvar::FindVarByName(const char* var_name) {
+	// Tip: There's logging in this function because this should run ONLY
+		// once for every ConVar. If the console is spammed it means you haven't
+		// made the variable static.
 
+	uint64_t i = 0;
+	GetFirstCvarIterator(i);
+	while (i != 0xFFFFFFFF) {
+		convar* pCvar = nullptr;
+		pCvar = FindVarByIndex(i);
+		if (strcmp(pCvar->m_name, var_name) == 0) {
+			//LOG(xorstr_("CCvar::FindVarByName() found '%s' at -> %p\n"), var_name,
+			 //   pCvar);
+			return pCvar;
+		}
+		GetNextCvarIterator(i);
+	}
 
-
+	//LOG(xorstr_("CCvar::FindVarByName() couldn't find '%s'.\n"), var_name);
+	return nullptr;
+}
+//convar* ccvar::FindVarByName(const char* var_name) {
+//	// Tip: There's logging in this function because this should run ONLY
+//	// once for every ConVar. If the console is spammed it means you haven't
+//	// made the variable static.
+//
+//	uint64_t i = 0;
+//	GetFirstCvarIterator(i);
+//	size_t count = 0;
+//	for (;; count++) {
+//		if (i == 0xFFFFFFFF) {
+//			MessageBoxW(NULL, L"i现在是0xFFFFFFFF", L"CVar 调试", MB_OK | MB_ICONINFORMATION);
+//			break;
+//		}
+//		convar* pCvar = FindVarByIndex(i);
+//		//Sleep(1000);
+//		//if ((uintptr_t)pCvar == 0x6C) {
+//		//	static uint64_t count = 0;
+//		//	count++;
+//		//	// 使用stringstream格式化浮点数
+//		//	std::stringstream ss;
+//		//	ss << std::fixed << std::setprecision(2) << i;
+//		//	std::string message = ss.str();
+//
+//		//	// 转换为宽字符串
+//		//	std::wstring wMessage(message.begin(), message.end());
+//
+//		//	//MessageBoxW(NULL, wMessage.c_str(), L"CVar 调试", MB_OK | MB_ICONINFORMATION);
+//		//	GetNextCvarIterator(i);
+//		//	continue;
+//		//}
+//		//else {
+//			//// 使用stringstream格式化浮点数
+//			//std::stringstream ss;
+//			//ss << std::fixed << std::setprecision(2) << pCvar->m_name;
+//			//std::string message = ss.str();
+//
+//			//// 转换为宽字符串
+//			//std::wstring wMessage(message.begin(), message.end());
+//
+//			//MessageBoxW(NULL, wMessage.c_str(), L"CVar 调试", MB_OK | MB_ICONINFORMATION);
+//		//}
+//
+//
+//		//MessageBoxA(NULL, pCvar->m_name, "Cvar", NULL);
+//
+//
+//
+//
+//		if (strcmp(pCvar->m_name, var_name) == 0) {
+//
+//			//LOG(xorstr_("CCvar::FindVarByName() found '%s' at -> %p\n"), var_name,
+//			 //   pCvar);
+//			return pCvar;
+//		}
+//
+//
+//
+//		GetNextCvarIterator(i);
+//	}
+//
+//
+//	// 使用stringstream格式化浮点数
+//	std::stringstream ss;
+//	ss << count;
+//	std::string message = ss.str();
+//
+//	// 转换为宽字符串
+//	std::wstring wMessage(message.begin(), message.end());
+//
+//	MessageBoxW(NULL, wMessage.c_str(), L"CVar 调试", MB_OK | MB_ICONINFORMATION);
+//
+//	//LOG(xorstr_("CCvar::FindVarByName() couldn't find '%s'.\n"), var_name);
+//	return nullptr;
+//}
 
 void CSController::GetModules() {
 	this->Modules.client = reinterpret_cast<uintptr_t>(GetModuleHandleW(L"client.dll"));
 	this->Modules.engine2 = reinterpret_cast<uintptr_t>(GetModuleHandleW(L"engine2.dll"));
+	this->Modules.tier0 = reinterpret_cast<uintptr_t>(GetModuleHandleW(L"tier0.dll"));
+	//if (this->Modules.tier0) {
+	//	std::thread([]() {
+	//		MessageBoxW(NULL, L"tier0.dll", L"获取到模块", MB_OK | MB_ICONINFORMATION);
+	//		}).detach(); // 分离线程，使其独立运行
+	//}
+
+	const char* ModuleName = "tier0.dll";
+	const char* InterfaceName = "VEngineCvar007";
+	HMODULE hModule = GetModuleHandleA(ModuleName);
+	auto pFunc = reinterpret_cast<void* (*)(const char*, int*)>(GetProcAddress(hModule, "CreateInterface"));
+	this->CvarSystem = (ccvar*)pFunc(InterfaceName, nullptr);
+
+	this->Local.pGlobalFOV = this->CvarSystem->FindVarByName("fov_cs_debug")->GetPtr<float>();
+
 	if (!this->Modules.client || !this->Modules.engine2) {
 		this->HasGetModules = false;
 	}
@@ -247,7 +358,35 @@ int CSController::BasicUpdate() {
 		//获取本地实体的摄像机模块
 		this->Local.Player.Pawn.CameraServices.Address = *reinterpret_cast<uintptr_t*>(this->Local.Player.Pawn.Address + cs2_dumper::schemas::client_dll::C_BasePlayerPawn::m_pCameraServices);
 		//从摄像机服务获取fov
-		this->Local.Player.Pawn.CameraServices.iFOV = *reinterpret_cast<int*>(this->Local.Player.Pawn.CameraServices.Address + cs2_dumper::schemas::client_dll::CCSPlayerBase_CameraServices::m_iFOV);
+		this->Local.Player.Pawn.CameraServices.pFOV = reinterpret_cast<int*>(this->Local.Player.Pawn.CameraServices.Address + cs2_dumper::schemas::client_dll::CCSPlayerBase_CameraServices::m_iFOV);
+		this->Local.Player.Pawn.CameraServices.pFOVStart = reinterpret_cast<uint32_t*>(this->Local.Player.Pawn.CameraServices.Address + cs2_dumper::schemas::client_dll::CCSPlayerBase_CameraServices::m_iFOVStart);
+		this->Local.Player.Pawn.CameraServices.pFOVRate = reinterpret_cast<float*>(this->Local.Player.Pawn.CameraServices.Address + cs2_dumper::schemas::client_dll::CCSPlayerBase_CameraServices::m_flFOVRate);
+		this->Local.Player.Pawn.CameraServices.pFOVTime = reinterpret_cast<float*>(this->Local.Player.Pawn.CameraServices.Address + cs2_dumper::schemas::client_dll::CCSPlayerBase_CameraServices::m_flFOVTime);
+		//if (this->CSATi->KT().IsKeyPressed('F')) {
+		//	//*this->Local.Player.Pawn.CameraServices.pFOV = 120;
+		//	
+		//	static float temp = 0;
+		//	convar* pVar = this->CvarSystem->FindVarByName("fov_cs_debug");
+		//	temp = pVar->GetValue<float>();
+
+		//	// 使用stringstream格式化浮点数
+		//	std::stringstream ss;
+		//	ss << pVar->m_name << std::fixed << std::setprecision(2) << temp;
+		//	std::string message = ss.str();
+
+		//	// 转换为宽字符串
+		//	std::wstring wMessage(message.begin(), message.end());
+
+		//	std::thread([wMessage]() {
+		//		MessageBoxW(NULL, wMessage.c_str(), L"CVar 调试", MB_OK | MB_ICONINFORMATION);
+		//	}).detach();
+
+		//	float* pfov = pVar->GetPtr<float>();
+		//	*pfov = 120.0f;
+		//	for (int i = 0; i < 10000; i++) {
+		//		
+		//	}
+		//}
 	}
 	//其它
 	{
@@ -401,13 +540,19 @@ int CSController::TryGetMsg() {
 }
 bool CSController::SetLocalFrame(const CSATMath::Frame& frame) {
 	static uint8_t LastIndex;
+	if (!this->CSATi->GlobalVars().InGamePlaying) {
+		return false;
+	}
+	else {
+		while (!this->SafeRead);
+	}
 	if (frame.TargetOBMode == 4) {
 		if (*this->Local.Player.Pawn.m_pObserverServices.m_iObserverMode == 4) {
 			DirectX::XMFLOAT4 PosAndFOV = frame.GetPositionAndFOV();
 			DirectX::XMFLOAT3 RotEuler = frame.GetRotationEuler();
 
 			this->SetLocalPosition(PosAndFOV);
-			//this->TrySetFOV(PosAndFOV.w);
+			this->SetLocalFOV(PosAndFOV.w);
 			this->SetLocalViewAngle(RotEuler);
 		}
 		else {
@@ -440,11 +585,7 @@ bool CSController::SetLocalPosition(const DirectX::XMFLOAT4& PosAndFOV) {
 }
 
 void CSController::SetLocalFOV(float FOV) {
-	if (this->SafeRead) {
-		char cmd[64];
-		snprintf(cmd, sizeof(cmd), "fov_cs_debug %.6f", FOV);
-		this->Execute(cmd);
-	}
+	*this->Local.pGlobalFOV = FOV;
 }
 
 CSATMath::SpatialState CSController::CSGetLocalSpatialState() {
@@ -489,9 +630,11 @@ float CSController::CSGetRenderTime() {
 
 float CSController::CSGetFov() {
 	std::shared_lock<std::shared_mutex> lock(this->BasicMtx);
-	if (!this->SafeRead)return 0;
-	float FOV = static_cast<float>(this->Local.Player.Pawn.CameraServices.iFOV);
-	if (FOV == 0)return 90.0;
+	static float FOV = static_cast<float>(this->Local.Player.Pawn.CameraServices.iFOV);
+	if (FOV == 0)FOV = 90;
+	if (!this->SafeRead)return FOV;
+	FOV = static_cast<float>(this->Local.Player.Pawn.CameraServices.iFOV);
+	if (FOV == 0)FOV = 90;
 	return FOV;
 }
 
@@ -562,6 +705,8 @@ std::ostringstream CSController::GetLocalPlayerMsg() {
 //	std::shared_lock<std::shared_mutex> lock(this->EntityListMtx);
 //	return this->EntityList;
 //}
+
+
 C_Entity CSController::GetEntity(size_t Index) {
 	std::shared_lock<std::shared_mutex> lock(this->EntityListMtx);
 	try {

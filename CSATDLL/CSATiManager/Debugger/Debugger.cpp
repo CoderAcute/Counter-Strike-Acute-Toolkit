@@ -48,9 +48,51 @@ void Debugger::Menu() {
         this->CSATi->CS().CSGetRotationEuler().y,
         this->CSATi->CS().CSGetRotationEuler().z);
 
-    int FOV = this->CSATi->CS().CSGetFov();
+    int FOV = *this->CSATi->CS().Local.Player.Pawn.CameraServices.pFOV;
     ImGui::Text("FOV:%d", FOV);
+    int FOVStart = *this->CSATi->CS().Local.Player.Pawn.CameraServices.pFOVStart;
+    ImGui::Text("FOVStart:%d", FOVStart);
+    float FOVRate = *this->CSATi->CS().Local.Player.Pawn.CameraServices.pFOVRate;
+    ImGui::Text("FOVRate:%.4f", FOVRate);
+    float FOVTime = *this->CSATi->CS().Local.Player.Pawn.CameraServices.pFOVTime;
+    ImGui::Text("FOVTime:%.4f", FOVTime);
+    static bool F1 = false, F2 = false;
+    ImGui::Checkbox("F1", &F1);
+    ImGui::Checkbox("F2", &F2);
+
+    static int inputFOVStart = 0;
+    ImGui::SliderInt("pFOVStart", &inputFOVStart, 0, 361);
+    if (F1) {
+        *this->CSATi->CS().Local.Player.Pawn.CameraServices.pFOVStart = inputFOVStart;
+    }
+    static float inputFOVRate = 0;
+    ImGui::SliderFloat("pFOVRate", &inputFOVRate, -1, 11);
+    if (F2) {
+        *this->CSATi->CS().Local.Player.Pawn.CameraServices.pFOVRate = inputFOVRate;
+    }
+
+    ImGui::Separator();
+    ImGui::Separator();
+
     
+    if (this->CSATi->CS().Local.pGlobalFOV) {
+        int GlobalFOV = *this->CSATi->CS().Local.pGlobalFOV;
+        static bool GlobalFOVControl = false;
+        ImGui::Checkbox("GlobalFOVControl", &GlobalFOVControl);
+
+        static float inputGFOV = 0;
+        ImGui::SliderFloat("全局FOV", &inputGFOV, 0, 360);
+
+        if (GlobalFOVControl) {
+            *this->CSATi->CS().Local.pGlobalFOV = inputGFOV;
+        }
+    }
+    
+    ImGui::Text("FOV:%d", FOV);
+
+    ImGui::Separator();
+    ImGui::Separator();
+
     ImGui::Text("本地控制器期望FOV： %d", *this->CSATi->CS().Local.Player.Controller.m_ipDesiredFOV);
 	static int NewFOV = FOV;
 	ImGui::InputInt("新FOV", &NewFOV);
@@ -541,6 +583,8 @@ void Debugger::MenuMonitor() {
     for (size_t i = 0; i < 64; ++i) {
         try {
 			C_Entity Entity = this->CSATi->CS().GetEntity(i);
+            ImGui::Text("编号：%d", Entity.Index);
+            ImGui::SameLine();
             ImGui::Text(Entity.GetMsg().str().c_str());
         }
         catch (...) {

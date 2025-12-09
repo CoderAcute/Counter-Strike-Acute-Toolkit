@@ -96,27 +96,30 @@ void ElementDebugger::DebugMenu_FreeCameraPath(FreeCameraPath* const FreeCamPath
 
         this->CamDrawer->DrawCamera(DirectX::XMFLOAT3{ tempPositionAndFOV.x,tempPositionAndFOV.y ,tempPositionAndFOV.z }, tempRotationEuler, "目标摄像机关键帧");
         if (ImGui::Button("修改")) {
+            //构造临时摄像机关键帧
             CSATMath::CameraKeyFrame tempKey;
-
+            //注入时间
             tempKey.KeyTime = temptime;
-
+            //注入位置和FOV
             tempKey.SpatialState.PositionAndFOV = DirectX::XMLoadFloat4(&tempPositionAndFOV);
-
+            //转换角度并注入
             DirectX::XMFLOAT4 tempRotationQuat;
             CSATMath::CSEulerToQuat(tempRotationEuler, tempRotationQuat);
             tempKey.SpatialState.RotationQuat = DirectX::XMLoadFloat4(&tempRotationQuat);
-
+            //擦除旧关键帧
             FreeCamPath->CameraKeyFrames.erase(FreeCamPath->CameraKeyFrames.begin() + IndexForReset);
-
+            //添加新关键帧
             FreeCamPath->AddKeyframe(std::move(tempKey));
             PreIndex = -1;
         }
         if (ImGui::Button("删除")) {
+            //删除并刷新
             FreeCamPath->CameraKeyFrames.erase(FreeCamPath->CameraKeyFrames.begin() + IndexForReset);
             FreeCamPath->Refresh();
             PreIndex = -1;
         }
         if (ImGui::Button("复制")) {
+            //拷贝复制
             FreeCamPath->AddKeyframe(FreeCamPath->GetKeyFrame(IndexForReset));
             PreIndex = -1;
         }
@@ -143,7 +146,7 @@ void ElementDebugger::DebugMenu_FirstPersonCameraPath(FirstPersonCameraPath* con
         FirstPersonCamPath->Refresh();
     }
     if (ImGui::Button("测试切换")) {
-        this->AL3D->ExecuteCommand("spec_mode 2;spec_player " + std::to_string(FirstPersonCamPath->TargetPlayerIndexInMap));
+        this->AL3D->SpecPlayer(FirstPersonCamPath->TargetPlayerIndexInMap);
     }
 
     return;

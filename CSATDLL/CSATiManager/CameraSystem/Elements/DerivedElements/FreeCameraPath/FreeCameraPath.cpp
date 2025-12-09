@@ -29,6 +29,8 @@ void FreeCameraPath::AddKeyframe(CSATMath::CameraKeyFrame&& KeyFrame) {
     return;
 }
 void FreeCameraPath::Refresh() {
+    //标记为脏
+    this->Dirty = true;
     this->Size_Frames = this->CameraKeyFrames.size();
     if (this->Size_Frames == 0) {
         this->StartTime = 0;
@@ -42,6 +44,8 @@ void FreeCameraPath::Refresh() {
         this->DurationTime = this->EndTime - this->StartTime;
         return;
     }
+    
+    return;
 }
 void FreeCameraPath::TimeNormalize() {
     if (this->CameraKeyFrames.front().KeyTime == 0)return;
@@ -56,6 +60,8 @@ void FreeCameraPath::TimeNormalize() {
         this->CameraKeyFrames.at(i).KeyTime -= Schema;
     }
     this->CameraKeyFrames.front().KeyTime = 0;
+    this->Refresh();
+    return;
 }
 bool FreeCameraPath::Call(CSATMath::Frame& Frame, float Time, const PlaybackMode Mode)const {
     //如果不在理论影响范围内，应当直接返回而不做任何修改
@@ -194,6 +200,7 @@ const std::vector<CSATMath::CameraKeyFrame>& FreeCameraPath::GetAllKeyFrames()co
 void FreeCameraPath::Clear() {
     this->CameraKeyFrames.clear();
     this->Refresh();
+    return;
 }
 bool FreeCameraPath::ReadElementMain(const pugi::xml_node& node_ElementMain, std::string& strRuselt) {
     //获取关键帧节点

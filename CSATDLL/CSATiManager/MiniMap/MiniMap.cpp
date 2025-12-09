@@ -14,10 +14,6 @@
 #include <string>
 #include <sstream>
 #include <cfloat>
-
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
 #include <Windows.h>
 
 bool MiniMap::Init() {

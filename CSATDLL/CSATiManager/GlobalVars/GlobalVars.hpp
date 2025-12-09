@@ -9,7 +9,7 @@
 //不允许写操作
 class GlobalVarsOnlyRead {
 public:
-	static constexpr const char CSATiVersion[] = "V1.0.7";
+	static constexpr const char CSATiVersion[] = "V1.0.8";
 	static constexpr const char TimeStamp[] = "Built: " __DATE__ " " __TIME__;
 	static constexpr const char FullName[] = "Counter-Strike: Acute Toolkit";
 	static constexpr const char DeveloperName[] = "Acute";
@@ -36,6 +36,7 @@ public:
 
 	std::atomic<bool> DebugMode = false;
 	std::atomic<bool> InGamePlaying = false;
+	std::atomic<bool> CampathPlaying = false;
 	std::atomic<uint32_t> CoreTick = 0;
 
 	bool Init()override;

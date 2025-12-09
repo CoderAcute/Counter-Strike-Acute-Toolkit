@@ -26,6 +26,7 @@ void FirstPersonCameraPath::Refresh() {
         this->DurationTime = this->EndTime - this->StartTime;
         return;
     }
+    this->Dirty = true;
     return;
 }
 

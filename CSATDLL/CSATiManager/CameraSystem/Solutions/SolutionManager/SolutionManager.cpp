@@ -4,6 +4,7 @@
 #include"../../../Debugger/IDebugger.hpp"
 #include"../../../AbstractLayer3D/IAbstractLayer3D.hpp"
 #include"../../../IPCer/IPCer.hpp"
+#include"../../../GlobalVars/GlobalVars.hpp"
 
 #include"../../CameraDrawer/CameraDrawer.hpp"
 #include"../../Elements/ElementManager/ElementManager.hpp"
@@ -81,6 +82,9 @@ bool SolutionManager::Solution_SaveAll() {
     std::filesystem::path SolutionFolderPath = this->CSATi->IPCer().PathGet_CurrentSolutions();
     //遍历所有解决方案保存
     for (const auto& solution : this->Solutions) {
+        if (!solution->Dirty) {
+            continue;//不脏不需保存
+        }
         std::string Ruselt;
         if (solution->SaveToXML(SolutionFolderPath, Ruselt)) {
             this->CSATi->IDebugger().AddSucc(Ruselt);
@@ -242,6 +246,8 @@ bool SolutionManager::Solution_LoadFromXML(const std::filesystem::path& FullPath
 
     //刷新
     NewSolution->Refresh();
+    //去除脏标记
+    NewSolution->Dirty = false;
     //检验时间关系
     if (NewSolution->TotalDurationTime != TargetDurationTime) {
         this->CSATi->IDebugger().AddWarning("该解决方案实际持续时长与预估持续时长不同，可能出现问题");
@@ -588,8 +594,7 @@ void SolutionManager::Solution_KCPack_DebugWindow(){
         }
 
         if (ImGui::Button("修改绑键")) {
-            this->CurrentSolution->KCPack = this->Buffer_KCPack;
-            this->CurrentSolution->KCPack.Refresh();
+            this->CurrentSolution->SetKeyCheckPack(this->Buffer_KCPack);
             this->OpenSolutionKCPackDebugWindow = false;
             ImGui::End();
             return;
@@ -694,10 +699,12 @@ void SolutionManager::Playing_Enable() {
         return;
     }
     this->Playing = true;
+    this->CSATi->GlobalVars().CampathPlaying = true;
     this->CSATi->IDebugger().AddInfo("已开启播放");
 }
 void SolutionManager::Playing_Disable() {
     this->Playing = false;
+    this->CSATi->GlobalVars().CampathPlaying = false;
     this->CSATi->IDebugger().AddInfo("已关闭播放");
 }
 void SolutionManager::Playing_SetTimeSchema(const float Time) {

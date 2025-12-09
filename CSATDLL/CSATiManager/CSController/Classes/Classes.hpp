@@ -128,6 +128,12 @@ public:
     std::ostringstream GetMsg()const;
 
     uintptr_t Address{};
+    int* pFOV{};
+    uint32_t* pFOVStart; // uint32
+    float* pFOVTime; // GameTime_t
+    float* pFOVRate; // float32
+    //constexpr std::ptrdiff_t m_hZoomOwner = 0x298; // CHandle<C_BaseEntity>
+    float* pLastShotFOV; // float32
     uint32_t iFOV{};
 };
 
@@ -216,6 +222,8 @@ public:
 	C_CSGameRules CSGameRules{};
     DirectX::XMFLOAT3* dwViewAngles{};
     float* dwViewMatrix;
+
+    float* pGlobalFOV = nullptr;
 };
 
 class C_EntityList {

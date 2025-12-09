@@ -11,7 +11,7 @@
 #include"../../../Debugger/IDebugger.hpp"
 #include"../../../KeyTracker/KeyTracker.hpp"
 #include"../../../IPCer/IPCer.hpp"
-
+#include"../../../GlobalVars/GlobalVars.hpp"
 
 #include"ElementDebugger/ElementDebugger.hpp"
 
@@ -150,6 +150,10 @@ bool ElementManager::Element_SaveAll() {
     std::filesystem::path ElementFolderPath = this->CSATi->IPCer().PathGet_CurrentElements();
     //遍历所有元素并保存
     for (const auto& elem : this->Elements) {
+        if (!elem->Dirty) {
+            //如果不脏则跳过保存
+            continue;
+        }
         std::string Ruselt;
         if (elem->SaveToXML(ElementFolderPath, Ruselt)) {
             this->CSATi->IDebugger().AddSucc(Ruselt);
@@ -260,6 +264,7 @@ bool ElementManager::Element_LoadFromXML_Pre(const std::filesystem::path& FullPa
     std::string strRuselt;
     if (pElement->ReadElementMain(node_ElementMain, strRuselt)) {
         pElement->Refresh();
+        pElement->Dirty = false;//刚刚进入内存，非脏
         this->CSATi->IDebugger().AddSucc(std::move(strRuselt));
         this->Elements.push_back(std::move(pElement));
         return true;
@@ -385,10 +390,12 @@ void ElementManager::Preview_Enable() {
         return;
     }
     this->OnPreview = true;
+    this->CSATi->GlobalVars().CampathPlaying = true;
     this->CSATi->IDebugger().AddInfo("已开启预览");
 }
 void ElementManager::Preview_Disable() {
     this->OnPreview = false;
+    this->CSATi->GlobalVars().CampathPlaying = false;
     this->CSATi->IDebugger().AddInfo("已关闭预览");
 }
 void ElementManager::Preview_SetElement(const std::string& Name) {

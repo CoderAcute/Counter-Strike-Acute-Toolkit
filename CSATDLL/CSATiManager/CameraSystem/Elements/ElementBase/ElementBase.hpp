@@ -59,7 +59,8 @@ protected:
     
     //需要被删除
     bool NeedBeDelete = false;
-    
+    //脏标记，需要重新保存
+    bool Dirty = false;
     //能否绘制（默认不能）
     bool Drawable = false;
     //是否绘制（默认不绘制）
@@ -81,6 +82,8 @@ public:
     ElementType TypeGet_Enum()const;
     //获取字符串类型
     std::string TypeGet_String()const; 
+
+
     //获取基本信息
     std::string GetBaseMsg()const;
     //获取名字

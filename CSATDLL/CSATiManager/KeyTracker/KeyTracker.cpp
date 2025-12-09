@@ -134,7 +134,7 @@ bool KeyTracker::TryCreateUpdateThread() {
         UpdateThread = std::thread([this]() {
             while (this->ThreadRunning) {
                 this->UpdateKeysState();
-                std::this_thread::sleep_for(std::chrono::milliseconds(10));//100Hz
+                std::this_thread::sleep_for(std::chrono::milliseconds(5));
             }
             });
         return true;

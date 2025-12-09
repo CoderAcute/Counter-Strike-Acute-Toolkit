@@ -3,7 +3,7 @@
 //#include"../../../../ThirdParty/All_ImGui.hpp"
 
 bool Solution::AddElement(const std::shared_ptr<ElementBase> const element, const float Offset) {
-    // 检查重复
+    //检查重复
     auto it = std::find_if(this->Elements.begin(), this->Elements.end(),
         [&element](const ElementWithOffset& ew) {
             if (auto el = ew.Element) {
@@ -16,19 +16,19 @@ bool Solution::AddElement(const std::shared_ptr<ElementBase> const element, cons
         return false;
     }
 
-    // 创建新元素
+    //创建新元素
     ElementWithOffset newElement{ element, Offset };
 
-    // 找到正确的插入位置以保持排序
+    //找到正确的插入位置以保持排序
     auto insertPos = std::lower_bound(Elements.begin(), Elements.end(), newElement,
         [](const ElementWithOffset& a, const ElementWithOffset& b) {
             return a.Offset < b.Offset;
         });
 
-    // 插入元素
+    //插入元素
     Elements.insert(insertPos, std::move(newElement));
 
-    // 计算自身大小同时检验所有元素有效性
+    //计算自身大小同时检验所有元素有效性
     this->Refresh();
     return true;
 }
@@ -103,6 +103,8 @@ bool Solution::SaveToXML(const std::filesystem::path& FolderPath, std::string& s
 }
 
 void Solution::Refresh() {
+    //标记为脏
+    this->Dirty = true;
     //判空处理
     if (this->Elements.empty()) {
         this->SafeUse = false;
@@ -145,6 +147,8 @@ void Solution::Refresh() {
     //计算总持续时间（从第一个元素开始到最后一个元素结束）
     this->TotalDurationTime = this->EndTime - this->StartTime;
     this->SafeUse = true;
+
+    return;
 }
 void Solution::SetSolutionOffset(const float Offset) {
     this->SolutionOffset = Offset;
@@ -201,9 +205,14 @@ void Solution::Clear() {
     this->Elements.clear();
     this->Refresh();
     this->SolutionOffset = 0;
+
+    return;
 }
 void Solution::ResetName(std::string_view NewName) {
     this->Name = NewName;
+    this->Dirty = true;
+
+    return;
 }
 std::string Solution::GetName()const {
     return this->Name;
@@ -262,6 +271,9 @@ bool Solution::Call(CSATMath::Frame& frame, const float Time, const float PlayBa
 
     return bResult;
 }
-void Solution::SetKeyCheckPack(KeyCheckPack& KCPack) {
+void Solution::SetKeyCheckPack(const KeyCheckPack& KCPack) {
     this->KCPack = KCPack;
+    this->KCPack.Refresh();
+    this->Dirty = true;
+    return;
 }

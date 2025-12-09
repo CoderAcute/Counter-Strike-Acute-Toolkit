@@ -2,12 +2,17 @@
 
 #include"../CSATiManager.hpp"
 #include"../CSController/CSController.hpp"
+#include"../GlobalVars/GlobalVars.hpp"
 
 bool AbstractLayer3D::Init() {
 	this->CS = &this->CSATi->CS();
 	return true;
 }
 void AbstractLayer3D::VirtualMain() {
+	if (!this->CSATi->GlobalVars().CampathPlaying) {
+		*this->CS->Local.pGlobalFOV = 0.0f;
+	}
+
 	return;
 }
 

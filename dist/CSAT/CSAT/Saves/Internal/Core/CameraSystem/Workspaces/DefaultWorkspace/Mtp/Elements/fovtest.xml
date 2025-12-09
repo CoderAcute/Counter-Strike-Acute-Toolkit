@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Element Type="FreeCameraPath" Name="fovtest">
+	<ElementMain DurationTime="3.96726227">
+		<KeyFrame Time="94.0327377" Px="-20.0345459" Py="-674.580078" Pz="-172.76001" FOV="120" Pitch="-6.97139835" Yaw="-2.32597423" Roll="-0" />
+		<KeyFrame Time="96.564949" Px="-270.106567" Py="-664.414124" Pz="-203.367126" FOV="60" Pitch="-6.97139835" Yaw="-2.32597423" Roll="-0" />
+		<KeyFrame Time="98" Px="-438.575714" Py="-757.887085" Pz="-223.460068" FOV="90" Pitch="-4.74763823" Yaw="13.0480633" Roll="-1.07089129e-07" />
+	</ElementMain>
+</Element>

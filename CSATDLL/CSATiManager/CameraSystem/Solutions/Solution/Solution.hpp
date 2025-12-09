@@ -42,6 +42,9 @@ private:
 
     //按键检测包
     KeyCheckPack KCPack{};
+
+    //脏标记，需要重新保存
+    bool Dirty = false;
 public:
     //构造函数
     Solution(const std::string& Name) :
@@ -76,11 +79,11 @@ public:
     void SetSolutionOffset(const float Offset);
     //按组合模式各个元素绝对启动时间生成复用模式的偏移
     bool TimeLineGenerate();
-    //刷新（会移除已经删除的元素）
+    //刷新（所有涉及调用、时间的修改操作应该调用本函数，会移除已经删除的元素）
     void Refresh();
     //展示信息
     std::string GetMsg();
 
     //设置按键检测包
-    void SetKeyCheckPack(KeyCheckPack& KCPack);
+    void SetKeyCheckPack(const KeyCheckPack& KCPack);
 };
