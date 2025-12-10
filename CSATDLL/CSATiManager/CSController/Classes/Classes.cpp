@@ -7,6 +7,21 @@
 #include<string>
 #include<sstream>
 
+void C_PlantedC4::Update() {
+	if (!this->Address)return;
+	this->m_bBombTicking = *reinterpret_cast<bool*>(this->Address + cs2_dumper::schemas::client_dll::C_PlantedC4::m_bBombTicking);
+	this->m_nBombSite = *reinterpret_cast<bool*>(this->Address + cs2_dumper::schemas::client_dll::C_PlantedC4::m_nBombSite);
+	this->m_flC4Blow = *reinterpret_cast<GameTime_t*>(this->Address + cs2_dumper::schemas::client_dll::C_PlantedC4::m_flC4Blow);
+	this->m_bHasExploded = *reinterpret_cast<bool*>(this->Address + cs2_dumper::schemas::client_dll::C_PlantedC4::m_bHasExploded);
+	this->m_flTimerLength = *reinterpret_cast<float*>(this->Address + cs2_dumper::schemas::client_dll::C_PlantedC4::m_flTimerLength);
+	this->m_bBeingDefused = *reinterpret_cast<bool*>(this->Address + cs2_dumper::schemas::client_dll::C_PlantedC4::m_bBeingDefused);
+	this->m_flDefuseLength = *reinterpret_cast<float*>(this->Address + cs2_dumper::schemas::client_dll::C_PlantedC4::m_flDefuseLength);
+	this->m_flDefuseCountDown = *reinterpret_cast<GameTime_t*>(this->Address + cs2_dumper::schemas::client_dll::C_PlantedC4::m_flDefuseCountDown);
+	this->m_bBombDefused = *reinterpret_cast<bool*>(this->Address + cs2_dumper::schemas::client_dll::C_PlantedC4::m_bBombDefused);
+	this->m_hBombDefuser = *reinterpret_cast<uint32_t*>(this->Address + cs2_dumper::schemas::client_dll::C_PlantedC4::m_hBombDefuser);
+	this->m_fLastDefuseTime = *reinterpret_cast<GameTime_t*>(this->Address + cs2_dumper::schemas::client_dll::C_PlantedC4::m_fLastDefuseTime);
+}
+
 void C_CSGameRules::Update() {
 	this->m_bFreezePeriod = *reinterpret_cast<bool*>(this->Address + cs2_dumper::schemas::client_dll::C_CSGameRules::m_bFreezePeriod);
 	this->m_bWarmupPeriod = *reinterpret_cast<bool*>(this->Address + cs2_dumper::schemas::client_dll::C_CSGameRules::m_bWarmupPeriod);

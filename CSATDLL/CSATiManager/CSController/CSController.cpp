@@ -444,6 +444,9 @@ int CSController::BasicUpdate() {
 		OldRoundStartCount = this->Local.CSGameRules.m_nRoundStartCount;
 	}
 
+
+
+
 	return 0;
 }
 
@@ -512,6 +515,20 @@ int CSController::GameRulesUpdate() {
 	std::unique_lock<std::shared_mutex> lock(this->GameRulesMtx);
 	this->Local.CSGameRules.Address = *reinterpret_cast<uintptr_t*>(this->Modules.client + cs2_dumper::offsets::client_dll::dwGameRules);
 	this->Local.CSGameRules.Update();
+	
+
+	this->Local.PlantedC4.Address = *reinterpret_cast<uintptr_t*>(this->Modules.client + cs2_dumper::offsets::client_dll::dwPlantedC4);
+	this->Local.PlantedC4.Update();
+
+	if (this->Local.CSGameRules.m_bBombPlanted) {
+		this->AL3D->SetPhaseStartTime(this->Local.PlantedC4.m_flC4Blow - this->Local.PlantedC4.m_flTimerLength);
+		this->AL3D->SetPhaseDuration(this->Local.PlantedC4.m_flTimerLength);
+	}
+	else {
+		this->AL3D->SetPhaseStartTime(this->Local.CSGameRules.m_fRoundStartTime);
+		this->AL3D->SetPhaseDuration(this->Local.CSGameRules.m_iRoundTime);
+	}
+	
 	return 0;
 }
 

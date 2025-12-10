@@ -11,6 +11,11 @@ private:
 	CSController* CS = nullptr;
 
 	std::atomic<float>CurrentTime = 0.0f;
+
+	//阶段时间基准
+	float PhaseStartTime = 0.0f;
+	//阶段时长
+	float PhaseDuration = 0.0f;
 public:
 	AbstractLayer3D(CSATiManager* CSATi) :IAbstractLayer3D(CSATi) {
 		this->Type = ModuleType::AbstractLayer3D;
@@ -22,6 +27,18 @@ public:
 	bool SetTime(float time)override;
 	bool PushTime(float Time)override;
 	float GetTime()const override;
+
+	//获取阶段已用时间（正计时）
+	float GetPhaseElapsedTime()const override;
+	//获取阶段剩余时间（倒计时）
+	float GetPhaseRemainingTime()const override;
+	//获取阶段总时长
+	float GetPhaseDuration()const override;
+	//设置阶段开始时间基准
+	void SetPhaseStartTime(float startTime)override;
+	//设置阶段总时长
+	void SetPhaseDuration(float duration)override;
+
 	CSATMath::SpatialState GetSpatialState()const override;
 	float* GetViewMatrix()const override;
 	float GetWinWidth()const override;

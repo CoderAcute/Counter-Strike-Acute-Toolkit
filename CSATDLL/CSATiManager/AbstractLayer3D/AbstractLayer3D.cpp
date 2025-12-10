@@ -34,6 +34,35 @@ bool AbstractLayer3D::PushTime(float Time) {
 float AbstractLayer3D::GetTime()const {
 	return this->CurrentTime.load();
 }
+
+//获取阶段已用时间（正计时）
+float AbstractLayer3D::GetPhaseElapsedTime()const {
+	return this->CurrentTime - this->PhaseStartTime;
+}
+//获取阶段剩余时间（倒计时）
+float AbstractLayer3D::GetPhaseRemainingTime()const {
+	return this->PhaseDuration - (this->CurrentTime - this->PhaseStartTime);
+}
+//获取阶段总时长
+float AbstractLayer3D::GetPhaseDuration()const {
+	return this->PhaseDuration;
+}
+//设置阶段开始时间基准
+void AbstractLayer3D::SetPhaseStartTime(float startTime) {
+	this->PhaseStartTime = startTime;
+	return;
+}
+//设置阶段总时长
+void AbstractLayer3D::SetPhaseDuration(float duration) {
+	this->PhaseDuration = duration;
+	return;
+}
+
+
+
+
+
+
 CSATMath::SpatialState AbstractLayer3D::GetSpatialState()const {
 	return this->CS->CSGetLocalSpatialState();
 }

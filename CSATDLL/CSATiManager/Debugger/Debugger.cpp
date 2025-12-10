@@ -9,6 +9,7 @@
 #include"../CameraSystem/ICameraSystem.hpp"
 #include"../KeyTracker/KeyTracker.hpp"
 #include"../GlobalVars/GlobalVars.hpp"
+#include"../AbstractLayer3D/IAbstractLayer3D.hpp"
 #include <bitset>
 
 bool Debugger::Init() {
@@ -423,6 +424,10 @@ void Debugger::MenuMonitor() {
     ImGui::Text("当前时间： %f", this->CSATi->CS().CSGetCurrentTime());
     ImGui::Text("RenderTime： %f", this->CSATi->CS().CSGetRenderTime());
     ImGui::Text("RenderTick： %d", this->CSATi->CS().CSGetRenderTick());
+
+    ImGui::Separator();
+
+	ImGui::Text("倒计时: %f", this->CSATi->IAbstractLayer3D().GetPhaseRemainingTime());
 
     ImGui::Separator();
     ImGui::Separator();

@@ -42,6 +42,17 @@ public:
 	virtual bool PushTime(float Time) = 0;
 	virtual float GetTime()const = 0;
 
+	//获取阶段已用时间（正计时）
+	virtual float GetPhaseElapsedTime()const = 0;
+	//获取阶段剩余时间（倒计时）
+	virtual float GetPhaseRemainingTime()const = 0;
+	//获取阶段总时长
+	virtual float GetPhaseDuration()const = 0;
+	//设置阶段开始时间基准
+	virtual void SetPhaseStartTime(float startTime) = 0;
+	//设置阶段总时长
+	virtual void SetPhaseDuration(float duration) = 0;
+
 	virtual CSATMath::SpatialState GetSpatialState()const = 0;
 
 	virtual float* GetViewMatrix()const = 0;
